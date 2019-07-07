@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageButton
+        android:id="@+id/C"
+        android:layout_width="@dimen/wNoteWidth"
+        android:layout_height="@dimen/wNoteHeight"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/ic_wnote" />
+
+    <ImageButton
+        android:id="@+id/Cs"
+        android:layout_width="@dimen/bNoteWidth"
+        android:layout_height="@dimen/bNoteHeight"
+        android:layout_marginStart="@dimen/bNoteMargin"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:elevation="1dp"
+        app:srcCompat="@drawable/ic_bnote" />
+
+    <ImageButton
+        android:id="@+id/D"
+        android:layout_width="@dimen/wNoteWidth"
+        android:layout_height="@dimen/wNoteHeight"
+        android:layout_marginStart="@dimen/wNoteMargin"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/ic_wnote" />
+
+    <ImageButton
+        android:id="@+id/Ds"
+        android:layout_width="@dimen/bNoteWidth"
+        android:layout_height="@dimen/bNoteHeight"
+        android:layout_marginStart="@dimen/bNoteMargin"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:elevation="1dp"
+        app:srcCompat="@drawable/ic_bnote" />
+
+    <ImageButton
+        android:id="@+id/E"
+        android:layout_width="@dimen/wNoteWidth"
+        android:layout_height="@dimen/wNoteHeight"
+        android:layout_marginStart="@dimen/wNoteMargin"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/ic_wnote" />
+
+    <ImageButton
+        android:id="@+id/F"
+        android:layout_width="@dimen/wNoteWidth"
+        android:layout_height="@dimen/wNoteHeight"
+        android:layout_marginStart="-2dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/ic_wnote" />
+
+    <ImageButton
+        android:id="@+id/Fs"
+        android:layout_width="@dimen/bNoteWidth"
+        android:layout_height="@dimen/bNoteHeight"
+        android:layout_marginStart="@dimen/bNoteMargin"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:elevation="1dp"
+        app:srcCompat="@drawable/ic_bnote" />
+
+    <ImageButton
+        android:id="@+id/G"
+        android:layout_width="@dimen/wNoteWidth"
+        android:layout_height="@dimen/wNoteHeight"
+        android:layout_marginStart="@dimen/wNoteMargin"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/ic_wnote" />
+
+    <ImageButton
+        android:id="@+id/Gs"
+        android:layout_width="@dimen/bNoteWidth"
+        android:layout_height="@dimen/bNoteHeight"
+        android:layout_marginStart="@dimen/bNoteMargin"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:elevation="1dp"
+        app:srcCompat="@drawable/ic_bnote" />
+
+    <ImageButton
+        android:id="@+id/A"
+        android:layout_width="@dimen/wNoteWidth"
+        android:layout_height="@dimen/wNoteHeight"
+        android:layout_marginStart="@dimen/wNoteMargin"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/ic_wnote" />
+
+    <ImageButton
+        android:id="@+id/As"
+        android:layout_width="@dimen/bNoteWidth"
+        android:layout_height="@dimen/bNoteHeight"
+        android:layout_marginStart="@dimen/bNoteMargin"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:elevation="1dp"
+        app:srcCompat="@drawable/ic_bnote" />
+
+    <ImageButton
+        android:id="@+id/B"
+        android:layout_width="@dimen/wNoteWidth"
+        android:layout_height="@dimen/wNoteHeight"
+        android:layout_marginStart="@dimen/wNoteMargin"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/ic_wnote"
+        android:layout_marginEnd="-2dp"/>
+
+</LinearLayout>

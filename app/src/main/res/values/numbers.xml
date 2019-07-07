@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="wNoteHeight">96dp</dimen>
+    <dimen name="wNoteWidth">46dp</dimen>
+    <dimen name="wNoteMargin">-17dp</dimen>
+
+    <dimen name="bNoteHeight">50dp</dimen>
+    <dimen name="bNoteWidth">32dp</dimen>
+    <dimen name="bNoteMargin">-17dp</dimen>
+</resources>
