@@ -6,53 +6,80 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
-    <LinearLayout
+    <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignParentBottom="true">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/keyboardControls_container"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/colorBG"
+        android:fillViewport="true">
 
         <LinearLayout
+            android:id="@+id/module_container"
             android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:orientation="horizontal"
-            android:background="#3D3D3D"
-            android:gravity="center">
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/octave_down_btn"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:text="-"
-                android:textSize="24dp"
-                android:textColor="#FFF"
-                android:backgroundTint="@color/colorPrimary"/>
-            <TextView
-                android:id="@+id/octave_display"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textSize="24dp"
-                android:textColor="#FFF"/>
-
-            <Button
-                android:id="@+id/octave_up_btn"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:text="+"
-                android:textSize="24dp"
-                android:textColor="#FFF"
-                android:backgroundTint="@color/colorPrimary"/>
+            <ImageButton
+                android:id="@+id/addModule_btn"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/ic_bx_plus_circle"
+                android:backgroundTint="@color/colorPrimary"
+                android:onClick="addModulePopup" />
 
         </LinearLayout>
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:id="@+id/keyboardControls_container"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_above="@+id/keyboard_display"
+        android:background="#3D3D3D"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/octave_down_btn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="-"
+            android:textColor="#FFF"
+            android:textSize="24dp" />
+
+        <TextView
+            android:id="@+id/octave_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#FFF"
+            android:textSize="24dp" />
+
+        <Button
+            android:id="@+id/octave_up_btn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="+"
+            android:textColor="#FFF"
+            android:textSize="24dp" />
+
+    </LinearLayout>
 
         <LinearLayout
             android:id="@+id/keyboard_display"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true">
         </LinearLayout>
-    </LinearLayout>
 
 </RelativeLayout>

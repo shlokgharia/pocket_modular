@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/oscillator_Display"
+    android:layout_width="450dp"
+    android:layout_height="match_parent"
+    android:layout_margin="4dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/moduleName_container"
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/moduleName_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="-2dp"
+                android:inputType="text"
+                android:rotation="-90"
+                android:scaleX="4"
+                android:scaleY="4"
+                android:text="osc"
+                android:textColor="#FFF"
+                android:textSize="6dp" />
+
+        </FrameLayout>
+
+        <!--<View
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorRed"/>-->
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorModuleBG"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/moduleName_container"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.jaygoo.widget.VerticalRangeSeekBar
+                android:id="@+id/rangeSeekBar"
+                android:layout_width="64dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.96"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                app:layout_constraintVertical_bias="0.0"
+                app:rsb_gravity="center"
+                app:rsb_indicator_background_color="@color/colorModuleBG"
+
+                app:rsb_indicator_show_mode="showWhenTouch"
+                app:rsb_max="100"
+                app:rsb_min="0"
+                app:rsb_mode="single"
+                app:rsb_progress_color="@color/colorBlue" />
+
+            <Button
+                android:id="@+id/sine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Sine"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="12dp"
+                android:text="Delete"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/saw" />
+
+            <Button
+                android:id="@+id/saw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Saw"
+                app:layout_constraintStart_toEndOf="@+id/sine"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="228dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/delete"
+                tools:layout_editor_absoluteX="64dp" />
+
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+</FrameLayout>
