@@ -1,0 +1,55 @@
+#N canvas 851 125 835 669 10;
+#X obj 240 584 dac~;
+#X obj 239 249 notein;
+#X obj 239 301 stripnote;
+#X obj 239 355 mtof;
+#X obj 239 472 phasor~;
+#X obj 306 473 vline~;
+#X obj 240 527 *~;
+#X msg 306 405 1 \$2 \, \$4 \$3 \$2;
+#X msg 439 426 0 \$2;
+#X obj 329 163 vsl 15 128 0 300 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 414 164 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 373 163 vsl 15 128 0 500 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 484 161 vsl 15 128 0 1000 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 329 299 5 0 0 0 - - -;
+#X floatatom 414 300 5 0 0 0 - - -;
+#X floatatom 373 299 5 0 0 0 - - -;
+#X floatatom 484 297 5 0 0 0 - - -;
+#X obj 306 358 pack f f f f;
+#X obj 439 396 pack f f;
+#X obj 439 366 sel 0;
+#X obj 329 66 receive envDecay;
+#X obj 373 87 receive envAttack;
+#X obj 414 110 receive envRelease;
+#X obj 484 130 receive envSustain;
+#X connect 1 0 2 0;
+#X connect 1 1 2 1;
+#X connect 1 1 19 0;
+#X connect 2 0 3 0;
+#X connect 2 0 17 0;
+#X connect 3 0 4 0;
+#X connect 4 0 6 0;
+#X connect 5 0 6 1;
+#X connect 6 0 0 0;
+#X connect 7 0 5 0;
+#X connect 8 0 5 1;
+#X connect 9 0 13 0;
+#X connect 10 0 14 0;
+#X connect 11 0 15 0;
+#X connect 12 0 16 0;
+#X connect 13 0 17 1;
+#X connect 14 0 17 3;
+#X connect 15 0 17 2;
+#X connect 16 0 18 1;
+#X connect 17 0 7 0;
+#X connect 18 0 8 0;
+#X connect 19 0 18 0;
+#X connect 20 0 9 0;
+#X connect 21 0 11 0;
+#X connect 22 0 10 0;
+#X connect 23 0 12 0;
