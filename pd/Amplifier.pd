@@ -1,0 +1,14 @@
+#N canvas 1099 366 450 300 10;
+#X obj 90 253 dac~;
+#X obj 92 36 osc~ 440;
+#X obj 91 218 *~;
+#X obj 153 64 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 153 35 receive ampVolume;
+#X text 94 17 Input;
+#X text 153 14 Volume in: 0 - 1;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 2 0 0 1;
+#X connect 3 0 2 1;
+#X connect 4 0 3 0;
