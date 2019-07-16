@@ -21,10 +21,10 @@
         <View
             android:layout_width="4dp"
             android:layout_height="match_parent"
-            android:background="@color/colorBlue"/>
+            android:background="@color/colorGreen"/>
 
         <FrameLayout
-            android:id="@+id/oscillatorName_container"
+            android:id="@+id/filterName_container"
             android:layout_width="36dp"
             android:layout_height="match_parent"
             android:background="@color/colorGray"
@@ -41,20 +41,20 @@
                 android:rotation="-90"
                 android:scaleX="4"
                 android:scaleY="4"
-                android:text="OSC"
+                android:text="FLT"
                 android:textColor="#FFF"
                 android:textSize="6dp" />
 
         </FrameLayout>
 
         <LinearLayout
-            android:id="@+id/oscillatorControls_container"
+            android:id="@+id/filterControls_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorModuleBG"
             android:clipChildren="false"
             android:clipToPadding="false"
-            android:weightSum="4">
+            android:weightSum="3">
 
             <RelativeLayout
                 android:layout_width="64dp"
@@ -65,36 +65,35 @@
                 android:layout_weight="1">
 
                 <com.jaygoo.widget.VerticalRangeSeekBar
-                    android:id="@+id/waveformSeekBar"
+                    android:id="@+id/frequencySeekBar"
                     android:layout_width="28dp"
                     android:layout_height="match_parent"
-                    android:layout_above="@+id/waveformSeekText"
+                    android:layout_above="@+id/frequencySeekText"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="6dp"
                     app:rsb_gravity="center"
-                    app:rsb_indicator_show_mode="alwaysHide"
-                    app:rsb_step_color="@color/colorBlue"
-                    app:rsb_step_height="10dp"
-                    app:rsb_step_width="2dp"
-                    app:rsb_max="3"
+                    app:rsb_indicator_background_color="@color/colorGreen"
+                    app:rsb_indicator_padding_bottom="5dp"
+                    app:rsb_indicator_padding_left="10dp"
+                    app:rsb_indicator_padding_right="10dp"
+                    app:rsb_indicator_padding_top="5dp"
+                    app:rsb_indicator_show_mode="showWhenTouch"
+                    app:rsb_max="100"
                     app:rsb_min="0"
-                    app:rsb_steps="3"
-                    app:rsb_step_auto_bonding="true"
                     app:rsb_mode="single"
-                    app:rsb_progress_color="@color/colorBlue"
+                    app:rsb_progress_color="@color/colorGreen"
                     app:rsb_tick_mark_layout_gravity="bottom"
-                    app:rsb_tick_mark_mode="other"
-                    app:rsb_tick_mark_text_array="@array/waveshapeSeekBar"
-                    app:rsb_tick_mark_text_margin="20dp"
-                    app:rsb_tick_mark_text_color="@color/colorBlue" />
+                    app:rsb_tick_mark_mode="number"
+                    app:rsb_tick_mark_text_array="@array/oneHundred"
+                    app:rsb_tick_mark_text_color="@color/colorGreen" />
 
 
                 <TextView
-                    android:id="@+id/waveformSeekText"
+                    android:id="@+id/frequencySeekText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:text="FORM"
+                    android:text="FREQ"
                     android:layout_centerHorizontal="true"/>
             </RelativeLayout>
 
@@ -107,14 +106,14 @@
                 android:layout_weight="1">
 
                 <com.jaygoo.widget.VerticalRangeSeekBar
-                    android:id="@+id/tuneSeekBar"
+                    android:id="@+id/resonanceSeekBar"
                     android:layout_width="28dp"
                     android:layout_height="match_parent"
-                    android:layout_above="@+id/tuneSeekText"
+                    android:layout_above="@+id/resonanceSeekText"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="6dp"
                     app:rsb_gravity="center"
-                    app:rsb_indicator_background_color="@color/colorBlue"
+                    app:rsb_indicator_background_color="@color/colorGreen"
                     app:rsb_indicator_padding_bottom="5dp"
                     app:rsb_indicator_padding_left="10dp"
                     app:rsb_indicator_padding_right="10dp"
@@ -123,18 +122,18 @@
                     app:rsb_max="100"
                     app:rsb_min="0"
                     app:rsb_mode="single"
-                    app:rsb_progress_color="@color/colorBlue"
+                    app:rsb_progress_color="@color/colorGreen"
                     app:rsb_tick_mark_layout_gravity="bottom"
                     app:rsb_tick_mark_mode="number"
                     app:rsb_tick_mark_text_array="@array/oneHundred"
-                    app:rsb_tick_mark_text_color="@color/colorBlue" />
+                    app:rsb_tick_mark_text_color="@color/colorGreen" />
 
                 <TextView
-                    android:id="@+id/tuneSeekText"
+                    android:id="@+id/resonanceSeekText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:text="TUNE"
+                    android:text="RES"
                     android:layout_centerHorizontal="true"/>
             </RelativeLayout>
 
@@ -147,14 +146,14 @@
                 android:layout_weight="1">
 
                 <com.jaygoo.widget.VerticalRangeSeekBar
-                    android:id="@+id/pwSeekBar"
+                    android:id="@+id/feedbackSeekBar"
                     android:layout_width="28dp"
                     android:layout_height="match_parent"
-                    android:layout_above="@+id/pwSeekText"
+                    android:layout_above="@+id/feedbackSeekText"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="6dp"
                     app:rsb_gravity="center"
-                    app:rsb_indicator_background_color="@color/colorBlue"
+                    app:rsb_indicator_background_color="@color/colorGreen"
                     app:rsb_indicator_padding_bottom="5dp"
                     app:rsb_indicator_padding_left="10dp"
                     app:rsb_indicator_padding_right="10dp"
@@ -163,58 +162,19 @@
                     app:rsb_max="100"
                     app:rsb_min="0"
                     app:rsb_mode="single"
-                    app:rsb_progress_color="@color/colorBlue"
+                    app:rsb_progress_color="@color/colorGreen"
                     app:rsb_tick_mark_layout_gravity="bottom"
                     app:rsb_tick_mark_mode="number"
                     app:rsb_tick_mark_text_array="@array/oneHundred"
-                    app:rsb_tick_mark_text_color="@color/colorBlue" />
+                    app:rsb_tick_mark_text_color="@color/colorGreen" />
 
                 <TextView
-                    android:id="@+id/pwSeekText"
+                    android:id="@+id/feedbackSeekText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:text="PW"
-                    android:layout_centerHorizontal="true"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="64dp"
-                android:layout_height="match_parent"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                android:orientation="vertical"
-                android:layout_weight="1">
-
-                <com.jaygoo.widget.VerticalRangeSeekBar
-                    android:id="@+id/fmSeekBar"
-                    android:layout_width="28dp"
-                    android:layout_height="match_parent"
-                    android:layout_above="@+id/fmSeekText"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="6dp"
-                    app:rsb_gravity="center"
-                    app:rsb_indicator_background_color="@color/colorBlue"
-                    app:rsb_indicator_padding_bottom="5dp"
-                    app:rsb_indicator_padding_left="10dp"
-                    app:rsb_indicator_padding_right="10dp"
-                    app:rsb_indicator_padding_top="5dp"
-                    app:rsb_indicator_show_mode="showWhenTouch"
-                    app:rsb_max="100"
-                    app:rsb_min="0"
-                    app:rsb_mode="single"
-                    app:rsb_progress_color="@color/colorBlue"
-                    app:rsb_tick_mark_layout_gravity="bottom"
-                    app:rsb_tick_mark_mode="number"
-                    app:rsb_tick_mark_text_array="@array/oneHundred"
-                    app:rsb_tick_mark_text_color="@color/colorBlue" />
-
-                <TextView
-                    android:id="@+id/fmSeekText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:text="FM"
+                    android:text="FEEDBACK"
+                    android:inputType="text"
                     android:layout_centerHorizontal="true"/>
             </RelativeLayout>
 

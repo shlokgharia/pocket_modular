@@ -1,103 +1,132 @@
 package com.example.pocketmodular.classes;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
+import com.example.pocketmodular.MyApplication;
 import com.example.pocketmodular.R;
 import com.jaygoo.widget.OnRangeChangedListener;
 import com.jaygoo.widget.RangeSeekBar;
 
+import org.puredata.core.PdBase;
+
 import java.io.IOException;
 
 public class Oscillator extends FrameLayout {
-    /*ui*/
-    RangeSeekBar rangeSeekBar;
-    Button sineBtn;
-    Button sawBtn;
-    Button deleteBtn;
-
     /*vars*/
+    MyApplication mApplication;
     private PdModule pdModule;
-    private int waveshape;
-    private float tune;
-    private float pw;
-    private float fm;
+    private Boolean isCollapsed;
 
-    public Oscillator(Context context) {
+    /*ui*/
+    private LinearLayout oscControlsContainer;
+    private RangeSeekBar waveformSeekBar;
+    private RangeSeekBar tuneSeekBar;
+    private RangeSeekBar pwSeekBar;
+    private RangeSeekBar fmSeekBar;
+
+    public Oscillator(Context context) throws IOException {
         super(context);
+        /*vars*/
+        mApplication = ((MyApplication)context.getApplicationContext());
         pdModule = new PdModule();
+        isCollapsed = false;
 
         /*ui*/
         LayoutInflater.from(context).inflate(R.layout.layout_oscillator, this);
-        rangeSeekBar = findViewById(R.id.rangeSeekBar);
-        rangeSeekBar.setIndicatorTextDecimalFormat("0.0");
+        FrameLayout oscNameContainer = findViewById(R.id.oscillatorName_container);
+        oscNameContainer.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleNameWidth(), oscNameContainer.getLayoutParams().height));
+        oscControlsContainer = findViewById(R.id.oscillatorControls_container);
+        oscControlsContainer.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleControlsWidth(), oscControlsContainer.getLayoutParams().height));
 
-        rangeSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
+        waveformSeekBar = findViewById(R.id.waveformSeekBar);
+        tuneSeekBar = findViewById(R.id.tuneSeekBar);
+        pwSeekBar = findViewById(R.id.pwSeekBar);
+        fmSeekBar = findViewById(R.id.fmSeekBar);
+
+        tuneSeekBar.setIndicatorTextDecimalFormat("0.0");
+        pwSeekBar.setIndicatorTextDecimalFormat("0.0");
+        fmSeekBar.setIndicatorTextDecimalFormat("0.0");
+
+        /*initPd*/
+        pdModule.openPatch(context, "oscillator");
+
+        /*OnClick*/
+        oscNameContainer.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int moduleSize = (isCollapsed)? mApplication.getModuleControlsWidth() : 0;
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(moduleSize, oscControlsContainer.getHeight());
+                oscControlsContainer.setLayoutParams(params);
+                isCollapsed = !isCollapsed;
+            }
+        });
+
+        waveformSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                Log.d("RangeSeek", leftValue + "");
-            }
-
-            @Override
-            public void onStartTrackingTouch(RangeSeekBar view, boolean isLeft) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(RangeSeekBar view, boolean isLeft) {
-
-            }
-        });
-
-        sineBtn = findViewById(R.id.sine);
-        sawBtn = findViewById(R.id.saw);
-        deleteBtn = findViewById(R.id.delete);
-
-        sineBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    pdModule.openPatch(getContext(), "test");
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if (leftValue == 0) {
+                    PdBase.sendFloat("oscSine", 0f);
+                    PdBase.sendFloat("oscTriangle", 0f);
+                    PdBase.sendFloat("oscSquare", 0f);
+                } else if (leftValue == 1) {
+                    PdBase.sendFloat("oscSine", 1.0f);
+                    PdBase.sendFloat("oscTriangle", 0f);
+                    PdBase.sendFloat("oscSquare", 0f);
+                } else if (leftValue == 2) {
+                    PdBase.sendFloat("oscSine", 0f);
+                    PdBase.sendFloat("oscTriangle", 1.0f);
+                    PdBase.sendFloat("oscSquare", 0f);
+                } else if (leftValue == 3) {
+                    PdBase.sendFloat("oscSine", 0f);
+                    PdBase.sendFloat("oscTriangle", 0f);
+                    PdBase.sendFloat("oscSquare", 1.0f);
                 }
             }
-        });
 
-        sawBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                try {
-                    pdModule.openPatch(getContext(), "test2");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            public void onStartTrackingTouch(RangeSeekBar view, boolean isLeft) {}
             @Override
-            public void onClick(View v) {
-                pdModule.closePatch();
-            }
+            public void onStopTrackingTouch(RangeSeekBar view, boolean isLeft) {}
         });
 
-    }
+        tuneSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
+            @Override
+            public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
 
-    public void setTune(float tune) {
-        this.tune = tune;
-    }
+            }
 
-    public void setPw(float pw) {
-        this.pw = pw;
-    }
+            @Override
+            public void onStartTrackingTouch(RangeSeekBar view, boolean isLeft) {}
+            @Override
+            public void onStopTrackingTouch(RangeSeekBar view, boolean isLeft) {}
+        });
 
-    public void setFm(float fm) {
-        this.fm = fm;
-    }
+        pwSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
+            @Override
+            public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
 
+            }
+
+            @Override
+            public void onStartTrackingTouch(RangeSeekBar view, boolean isLeft) {}
+            @Override
+            public void onStopTrackingTouch(RangeSeekBar view, boolean isLeft) {}
+        });
+
+        fmSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
+            @Override
+            public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(RangeSeekBar view, boolean isLeft) {}
+            @Override
+            public void onStopTrackingTouch(RangeSeekBar view, boolean isLeft) {}
+        });
+    }
 }

@@ -3,10 +3,9 @@
     <color name="colorRed">#CB4173</color>
     <color name="colorGreen">#A5D19C</color>
     <color name="colorBlue">#08909A</color>
+    <color name="colorGray">#565455</color>
 
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorPrimary">#565455</color>
-
-    <color name="colorBG">#DEDEDF</color>
     <color name="colorModuleBG">#C9C8CE</color>
+    <color name="colorDarkBG">#3D3D3D</color>
+    <color name="colorDarkerBG">#353535</color>
 </resources>

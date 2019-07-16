@@ -5,4 +5,51 @@
         <item>Oscillator</item>
     </string-array>
 
+    <string-array name="one">
+        <item>0</item>
+        <item>0.25</item>
+        <item>0.50</item>
+        <item>0.75</item>
+        <item>1</item>
+    </string-array>
+
+    <string-array name="oneHundred">
+        <item>0</item>
+        <item>25</item>
+        <item>50</item>
+        <item>75</item>
+        <item>100</item>
+    </string-array>
+
+    <string-array name="threeHundred">
+        <item>0</item>
+        <item>75</item>
+        <item>150</item>
+        <item>225</item>
+        <item>300</item>
+    </string-array>
+
+    <string-array name="fiveHundred">
+        <item>0</item>
+        <item>125</item>
+        <item>250</item>
+        <item>375</item>
+        <item>500</item>
+    </string-array>
+
+    <string-array name="oneThousand">
+        <item>0</item>
+        <item>250</item>
+        <item>500</item>
+        <item>750</item>
+        <item>1000</item>
+    </string-array>
+
+    <string-array name="waveshapeSeekBar">
+        <item>None</item>
+        <item>Sine</item>
+        <item>Triangle</item>
+        <item>Square</item>
+    </string-array>
+
 </resources>

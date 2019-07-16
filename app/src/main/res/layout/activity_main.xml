@@ -7,13 +7,13 @@
     tools:context=".MainActivity">
 
     <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/keyboardControls_container"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:background="@color/colorBG"
+        android:background="@color/colorDarkerBG"
         android:fillViewport="true">
 
         <LinearLayout
@@ -23,26 +23,16 @@
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/addModule_btn"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:background="@drawable/ic_bx_plus_circle"
-                android:backgroundTint="@color/colorPrimary"
-                android:onClick="addModulePopup" />
-
         </LinearLayout>
+
     </HorizontalScrollView>
 
     <LinearLayout
         android:id="@+id/keyboardControls_container"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
+        android:layout_height="48dp"
         android:layout_above="@+id/keyboard_display"
-        android:background="#3D3D3D"
+        android:background="@color/colorDarkBG"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -50,7 +40,7 @@
             android:id="@+id/octave_down_btn"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:backgroundTint="@color/colorPrimary"
+            android:backgroundTint="@color/colorGray"
             android:text="-"
             android:textColor="#FFF"
             android:textSize="24dp" />
@@ -67,7 +57,7 @@
             android:id="@+id/octave_up_btn"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:backgroundTint="@color/colorPrimary"
+            android:backgroundTint="@color/colorGray"
             android:text="+"
             android:textColor="#FFF"
             android:textSize="24dp" />

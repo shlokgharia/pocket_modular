@@ -2,16 +2,18 @@ package com.example.pocketmodular;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 
+import com.example.pocketmodular.classes.Amplifier;
+import com.example.pocketmodular.classes.Envelope;
+import com.example.pocketmodular.classes.Filter;
 import com.example.pocketmodular.classes.Note;
 import com.example.pocketmodular.classes.Oscillator;
 
@@ -23,11 +25,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+public class MainActivity extends AppCompatActivity {
     /*vars*/
     List <FrameLayout> mPdModules;
     int mOctave;                    // current octave
     List<Note> mNotes;              // implements an onTouchListener for each note in the keyboard (see Notes.java)
+    int screenWidth;
 
     /*ui*/
     LinearLayout mModuleContainer;
@@ -48,6 +51,11 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             finish();
         }
         initGui();
+        try {
+            createRack();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initGui() {
@@ -56,13 +64,19 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         mNotes = new ArrayList<>();
         mOctave = 4;
 
+        // Get & Set screen width
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        screenWidth = displayMetrics.widthPixels;
+        ((MyApplication) getApplication()).setScreenWidth(screenWidth);
+
         /*ui*/
+        hideNotificationBar();
         mModuleContainer = findViewById(R.id.module_container);
         mKeyboardDisplay = findViewById(R.id.keyboard_display);
         mOctaveDisplay = findViewById(R.id.octave_display);
         Button mOctaveUpBtn = findViewById(R.id.octave_up_btn);
         Button mOctaveDownBtn = findViewById(R.id.octave_down_btn);
-        hideNotificationBar();
 
         /*constructs keyboard with 3 octaves*/
         List<View> tempOctaveDisplay = new ArrayList<>();
@@ -108,27 +122,25 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         PdAudio.initAudio(sampleRate, 0, 2, 1, true);
     }
 
-    /*----OnClick----*/
-    public void addModulePopup (View view) {
-        PopupMenu popupMenu = new PopupMenu(this, view);
-        popupMenu.setOnMenuItemClickListener(this);
-        popupMenu.inflate(R.menu.modulepopup_menu);
-        popupMenu.show();
-    }
-
-    @Override
-    public boolean onMenuItemClick(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.oscillator:
-                Oscillator newOscModule = new Oscillator(this);
-                mModuleContainer.addView(newOscModule, mModuleContainer.getChildCount()-1);
-                mPdModules.add(newOscModule);
-                return true;
-        }
-        return false;
-    }
-
     /*----Helper Functions----*/
+    private void createRack() throws IOException {
+        Oscillator newMidiModule = new Oscillator(this);
+        mModuleContainer.addView(newMidiModule, mModuleContainer.getChildCount());
+        mPdModules.add(newMidiModule);
+
+        Filter newFilter = new Filter(this);
+        mModuleContainer.addView(newFilter, mModuleContainer.getChildCount());
+        mPdModules.add(newFilter);
+
+        Envelope newEnvelope = new Envelope(this);
+        mModuleContainer.addView(newEnvelope, mModuleContainer.getChildCount());
+        mPdModules.add(newEnvelope);
+
+        Amplifier newAmplifier = new Amplifier(this);
+        mModuleContainer.addView(newAmplifier, mModuleContainer.getChildCount());
+        mPdModules.add(newAmplifier);
+    }
+
     private void updateOctave(int offSet) {
         mOctave += offSet;
         for (Note note : mNotes) {
