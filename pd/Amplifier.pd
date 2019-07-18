@@ -5,9 +5,13 @@
 #X obj 191 36 receive ampVolume;
 #X text 94 17 Input;
 #X text 190 16 Volume in: 0 - 1;
-#X obj 92 37 receive~ ampIn;
-#X obj 90 248 send~ ampOut;
+#X obj 91 65 sig~;
+#X obj 90 241 snapshot~;
+#X obj 90 265 send ampOut;
+#X obj 91 37 receive ampIn;
 #X connect 0 0 6 0;
 #X connect 1 0 0 1;
 #X connect 2 0 1 0;
 #X connect 5 0 0 0;
+#X connect 6 0 7 0;
+#X connect 8 0 5 0;

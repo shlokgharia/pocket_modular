@@ -1,4 +1,4 @@
-#N canvas 826 151 835 669 10;
+#N canvas 490 264 835 669 10;
 #X obj 117 493 vline~;
 #X obj 51 547 *~;
 #X msg 117 425 1 \$2 \, \$4 \$3 \$2;
@@ -24,8 +24,6 @@
 #X obj 307 153 receive envSustain;
 #X obj 262 130 receive envVelocity;
 #X obj 117 40 receive envNoteOn;
-#X obj 52 20 receive~ envIn;
-#X obj 52 586 send~ envOut;
 #X text 438 16 envIn: audio in;
 #X text 437 36 envNoteOn: note on signal from stripote object;
 #X text 436 59 envDecay: 0 - 300ms;
@@ -33,8 +31,12 @@
 #X text 437 81 envAttack: 0 - 500ms;
 #X text 439 122 envVelocity: velocity from stripnote object;
 #X text 440 147 envSustain: 0 - 1000;
+#X obj 51 571 snapshot~;
+#X obj 51 598 send envOut;
+#X obj 52 45 sig~;
+#X obj 52 20 receive envIn;
 #X connect 0 0 1 1;
-#X connect 1 0 22 0;
+#X connect 1 0 28 0;
 #X connect 2 0 0 0;
 #X connect 3 0 0 1;
 #X connect 4 0 8 0;
@@ -54,4 +56,6 @@
 #X connect 18 0 7 0;
 #X connect 19 0 14 0;
 #X connect 20 0 12 0;
-#X connect 21 0 1 0;
+#X connect 28 0 29 0;
+#X connect 30 0 1 0;
+#X connect 31 0 30 0;

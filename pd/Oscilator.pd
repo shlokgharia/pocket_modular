@@ -26,12 +26,13 @@
 #X obj 242 106 mtof;
 #X obj 242 74 stripnote;
 #X obj 242 41 notein;
-#X obj 244 427 send~ oscOut;
 #X obj 294 108 send noteOut;
 #X text 384 107 noteOut: the note on info from stripnote;
+#X obj 246 391 snapshot~;
+#X obj 246 424 send oscOut;
 #X connect 0 0 2 0;
 #X connect 1 0 0 0;
-#X connect 2 0 24 0;
+#X connect 2 0 26 0;
 #X connect 3 0 2 1;
 #X connect 4 0 8 0;
 #X connect 4 0 5 0;
@@ -41,11 +42,11 @@
 #X connect 8 0 9 0;
 #X connect 9 0 5 1;
 #X connect 10 0 11 1;
-#X connect 11 0 24 0;
+#X connect 11 0 26 0;
 #X connect 12 0 20 0;
 #X connect 13 0 15 0;
 #X connect 14 0 15 1;
-#X connect 15 0 24 0;
+#X connect 15 0 26 0;
 #X connect 16 0 13 0;
 #X connect 17 0 3 0;
 #X connect 18 0 10 0;
@@ -55,6 +56,7 @@
 #X connect 21 0 4 0;
 #X connect 21 0 12 0;
 #X connect 22 0 21 0;
-#X connect 22 0 25 0;
+#X connect 22 0 24 0;
 #X connect 23 0 22 0;
 #X connect 23 0 22 1;
+#X connect 26 0 27 0;
