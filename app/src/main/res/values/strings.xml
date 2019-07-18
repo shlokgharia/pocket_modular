@@ -13,6 +13,14 @@
         <item>1</item>
     </string-array>
 
+    <string-array name="four">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
     <string-array name="oneHundred">
         <item>0</item>
         <item>25</item>
@@ -45,11 +53,28 @@
         <item>1000</item>
     </string-array>
 
-    <string-array name="waveshapeSeekBar">
+    <string-array name="fourThousand">
+        <item>0</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>3000</item>
+        <item>4000</item>
+    </string-array>
+
+    <string-array name="waveshapeArray">
         <item>None</item>
         <item>Sine</item>
         <item>Triangle</item>
         <item>Square</item>
     </string-array>
+
+    <string-array name="filterTypeArray">
+        <item>None</item>
+        <item>Low</item>
+        <item>High</item>
+        <item>Band</item>
+    </string-array>
+
+
 
 </resources>

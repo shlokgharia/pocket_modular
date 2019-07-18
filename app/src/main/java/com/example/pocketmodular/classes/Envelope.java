@@ -47,10 +47,10 @@ public class Envelope extends FrameLayout {
         sustainSeekBar = findViewById(R.id.sustainSeekBar);
         releaseSeekBar = findViewById(R.id.releaseSeekBar);
 
-        attackSeekBar.setIndicatorTextDecimalFormat("0.0");
-        decaySeekBar.setIndicatorTextDecimalFormat("0.0");
-        sustainSeekBar.setIndicatorTextDecimalFormat("0.0");
-        releaseSeekBar.setIndicatorTextDecimalFormat("0.0");
+        attackSeekBar.setIndicatorTextDecimalFormat("0");
+        decaySeekBar.setIndicatorTextDecimalFormat("0");
+        sustainSeekBar.setIndicatorTextDecimalFormat("0");
+        releaseSeekBar.setIndicatorTextDecimalFormat("0.00");
 
         /*initPd*/
         pdModule.openPatch(context, "envelope");

@@ -84,7 +84,7 @@
                     app:rsb_progress_color="@color/colorBlue"
                     app:rsb_tick_mark_layout_gravity="bottom"
                     app:rsb_tick_mark_mode="other"
-                    app:rsb_tick_mark_text_array="@array/waveshapeSeekBar"
+                    app:rsb_tick_mark_text_array="@array/waveshapeArray"
                     app:rsb_tick_mark_text_margin="20dp"
                     app:rsb_tick_mark_text_color="@color/colorBlue" />
 
