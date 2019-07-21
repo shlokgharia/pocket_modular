@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="4dp"
+            android:weightSum="3"
+            android:clipChildren="false">
+
+                <Spinner
+                    android:id="@+id/moduleSourcesSpinner"
+                    android:layout_width="108dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1">
+                </Spinner>
+
+                <com.jaygoo.widget.VerticalRangeSeekBar
+                    android:id="@+id/depthSeekBar"
+                    android:layout_width="28dp"
+                    android:layout_height="84dp"
+                    app:rsb_gravity="center"
+                    app:rsb_indicator_background_color="@color/colorBlue"
+                    app:rsb_indicator_padding_bottom="5dp"
+                    app:rsb_indicator_padding_left="10dp"
+                    app:rsb_indicator_padding_right="10dp"
+                    app:rsb_indicator_padding_top="5dp"
+                    app:rsb_indicator_show_mode="showWhenTouch"
+                    app:rsb_max="100"
+                    app:rsb_min="0"
+                    app:rsb_mode="single"
+                    app:rsb_progress_color="@color/colorBlue"
+                    android:layout_weight="1"/>
+
+                <Spinner
+                    android:id="@+id/moduleDestinationsSpinner"
+                    android:layout_width="108dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1">
+                </Spinner>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorGray"></View>
+
+</LinearLayout>

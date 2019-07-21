@@ -1,3 +1,64 @@
 <resources>
     <string name="app_name">PocketModular</string>
+
+    <string-array name="sources">
+        <item>Empty</item>
+
+        <item>osc_OUT_1</item>
+        <item>osc_OUT_2</item>
+        <item>osc_OUT_3</item>
+        <item>osc_OUT_4</item>
+
+        <item>flt_OUT_1</item>
+        <item>flt_OUT_2</item>
+        <item>flt_OUT_3</item>
+        <item>flt_OUT_4</item>
+
+        <item>env_OUT_1</item>
+        <item>env_OUT_2</item>
+        <item>env_OUT_3</item>
+        <item>env_OUT_4</item>
+        <item>env_OUT_5</item>
+        <item>env_OUT_6</item>
+
+        <item>amp_OUT_1</item>
+        <item>amp_OUT_2</item>
+        <item>amp_OUT_3</item>
+        <item>amp_OUT_4</item>
+        <item>amp_OUT_5</item>
+        <item>amp_OUT_6</item>
+
+        <item>midi_PITCH_1</item>
+        <item>midi_PITCH_2</item>
+        <item>midi_PITCH_3</item>
+        <item>midi_PITCH_4</item>
+
+        <item>midi_GATE_1</item>
+        <item>midi_GATE_2</item>
+        <item>midi_GATE_3</item>
+        <item>midi_GATE_4</item>
+    </string-array>
+
+    <string-array name="waveshapeArray">
+        <item>None</item>
+        <item>Sine</item>
+        <item>Triangle</item>
+        <item>Square</item>
+    </string-array>
+
+    <string-array name="filterTypeArray">
+        <item>None</item>
+        <item>Low</item>
+        <item>High</item>
+        <item>Band</item>
+    </string-array>
+
+    <string-array name="oneHundred">
+        <item>0</item>
+        <item>25</item>
+        <item>50</item>
+        <item>75</item>
+        <item>100</item>
+    </string-array>
+
 </resources>

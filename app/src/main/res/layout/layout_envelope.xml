@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/oscillatorModule_container"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorDarkBG"/>
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorRed"/>
+
+        <FrameLayout
+            android:id="@+id/envelopeNameFrameLayout"
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorGray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="-2dp"
+                android:inputType="text"
+                android:rotation="-90"
+                android:scaleX="4"
+                android:scaleY="4"
+                android:text="ENV"
+                android:textColor="#FFF"
+                android:textSize="6dp" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/envelopeControlsLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorModuleBG"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:weightSum="3">
+
+            <RelativeLayout
+                android:layout_width="64dp"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <com.jaygoo.widget.VerticalRangeSeekBar
+                    android:id="@+id/attackSeekBar"
+                    android:layout_width="28dp"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/attackSeekText"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    app:rsb_gravity="center"
+                    app:rsb_indicator_background_color="@color/colorRed"
+                    app:rsb_indicator_padding_bottom="5dp"
+                    app:rsb_indicator_padding_left="10dp"
+                    app:rsb_indicator_padding_right="10dp"
+                    app:rsb_indicator_padding_top="5dp"
+                    app:rsb_indicator_show_mode="showWhenTouch"
+                    app:rsb_max="100"
+                    app:rsb_min="0"
+                    app:rsb_mode="single"
+                    app:rsb_progress_color="@color/colorRed"
+                    app:rsb_tick_mark_layout_gravity="bottom"
+                    app:rsb_tick_mark_mode="number"
+                    app:rsb_tick_mark_text_array="@array/oneHundred"
+                    app:rsb_tick_mark_text_color="@color/colorRed" />
+
+
+                <TextView
+                    android:id="@+id/attackSeekText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:text="ATTACK"
+                    android:layout_centerHorizontal="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="64dp"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <com.jaygoo.widget.VerticalRangeSeekBar
+                    android:id="@+id/decaySeekBar"
+                    android:layout_width="28dp"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/decaySeekText"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    app:rsb_gravity="center"
+                    app:rsb_indicator_background_color="@color/colorRed"
+                    app:rsb_indicator_padding_bottom="5dp"
+                    app:rsb_indicator_padding_left="10dp"
+                    app:rsb_indicator_padding_right="10dp"
+                    app:rsb_indicator_padding_top="5dp"
+                    app:rsb_indicator_show_mode="showWhenTouch"
+                    app:rsb_max="100"
+                    app:rsb_min="0"
+                    app:rsb_mode="single"
+                    app:rsb_progress_color="@color/colorRed"
+                    app:rsb_tick_mark_layout_gravity="bottom"
+                    app:rsb_tick_mark_mode="number"
+                    app:rsb_tick_mark_text_array="@array/oneHundred"
+                    app:rsb_tick_mark_text_color="@color/colorRed" />
+
+                <TextView
+                    android:id="@+id/decaySeekText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:text="DECAY"
+                    android:layout_centerHorizontal="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="64dp"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <com.jaygoo.widget.VerticalRangeSeekBar
+                    android:id="@+id/sustainSeekBar"
+                    android:layout_width="28dp"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/sustainSeekText"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    app:rsb_gravity="center"
+                    app:rsb_indicator_background_color="@color/colorRed"
+                    app:rsb_indicator_padding_bottom="5dp"
+                    app:rsb_indicator_padding_left="10dp"
+                    app:rsb_indicator_padding_right="10dp"
+                    app:rsb_indicator_padding_top="5dp"
+                    app:rsb_indicator_show_mode="showWhenTouch"
+                    app:rsb_max="100"
+                    app:rsb_min="0"
+                    app:rsb_mode="single"
+                    app:rsb_progress_color="@color/colorRed"
+                    app:rsb_tick_mark_layout_gravity="bottom"
+                    app:rsb_tick_mark_mode="number"
+                    app:rsb_tick_mark_text_array="@array/oneHundred"
+                    app:rsb_tick_mark_text_color="@color/colorRed" />
+
+                <TextView
+                    android:id="@+id/sustainSeekText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:text="SUSTAIN"
+                    android:inputType="text"
+                    android:layout_centerHorizontal="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="64dp"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <com.jaygoo.widget.VerticalRangeSeekBar
+                    android:id="@+id/releaseSeekBar"
+                    android:layout_width="28dp"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/releaseSeekText"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    app:rsb_gravity="center"
+                    app:rsb_indicator_background_color="@color/colorRed"
+                    app:rsb_indicator_padding_bottom="5dp"
+                    app:rsb_indicator_padding_left="10dp"
+                    app:rsb_indicator_padding_right="10dp"
+                    app:rsb_indicator_padding_top="5dp"
+                    app:rsb_indicator_show_mode="showWhenTouch"
+                    app:rsb_max="100"
+                    app:rsb_min="0"
+                    app:rsb_mode="single"
+                    app:rsb_progress_color="@color/colorRed"
+                    app:rsb_tick_mark_layout_gravity="bottom"
+                    app:rsb_tick_mark_mode="number"
+                    app:rsb_tick_mark_text_array="@array/oneHundred"
+                    app:rsb_tick_mark_text_color="@color/colorRed" />
+
+                <TextView
+                    android:id="@+id/releaseSeekText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:text="RELEASE"
+                    android:inputType="text"
+                    android:layout_centerHorizontal="true"/>
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
