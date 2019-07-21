@@ -9,7 +9,7 @@
     <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/keyboardControls_container"
+        android:layout_above="@+id/keyboardControlsLinearLayout"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -28,16 +28,16 @@
     </HorizontalScrollView>
 
     <LinearLayout
-        android:id="@+id/keyboardControls_container"
+        android:id="@+id/keyboardControlsLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_above="@+id/keyboard_display"
+        android:layout_above="@+id/keyboard"
         android:background="@color/colorDarkBG"
         android:gravity="center"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/octave_down_btn"
+            android:id="@+id/octaveDownBtn"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:backgroundTint="@color/colorGray"
@@ -46,7 +46,7 @@
             android:textSize="24dp" />
 
         <TextView
-            android:id="@+id/octave_display"
+            android:id="@+id/octaveText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
@@ -54,7 +54,7 @@
             android:textSize="24dp" />
 
         <Button
-            android:id="@+id/octave_up_btn"
+            android:id="@+id/octaveUpBtn"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:backgroundTint="@color/colorGray"
@@ -65,7 +65,7 @@
     </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/keyboard_display"
+            android:id="@+id/keyboard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

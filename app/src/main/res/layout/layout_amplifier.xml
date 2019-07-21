@@ -78,13 +78,13 @@
                     app:rsb_indicator_padding_right="10dp"
                     app:rsb_indicator_padding_top="5dp"
                     app:rsb_indicator_show_mode="showWhenTouch"
-                    app:rsb_max="1"
+                    app:rsb_max="100"
                     app:rsb_min="0"
                     app:rsb_mode="single"
                     app:rsb_progress_color="@color/colorModuleBG"
                     app:rsb_tick_mark_layout_gravity="bottom"
                     app:rsb_tick_mark_mode="number"
-                    app:rsb_tick_mark_text_array="@array/one"
+                    app:rsb_tick_mark_text_array="@array/oneHundred"
                     app:rsb_tick_mark_text_color="@color/colorModuleBG" />
 
 

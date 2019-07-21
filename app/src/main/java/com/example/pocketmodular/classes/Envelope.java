@@ -17,59 +17,55 @@ import java.io.IOException;
 
 public class Envelope extends FrameLayout {
     /*vars*/
-    MyApplication mApplication;
-    private PdModule pdModule;
+    private MyApplication mApplication;
     private Boolean isCollapsed;
 
     /*ui*/
-    private LinearLayout envelopeControlsContainer;
-    private RangeSeekBar attackSeekBar;
-    private RangeSeekBar decaySeekBar;
-    private RangeSeekBar sustainSeekBar;
-    private RangeSeekBar releaseSeekBar;
+    private FrameLayout mEnvelopeName;
+    private LinearLayout mEnvelopeControls;
+    private RangeSeekBar mAttackSeekBar;
+    private RangeSeekBar mDecaySeekBar;
+    private RangeSeekBar mSustainSeekBar;
+    private RangeSeekBar mReleaseSeekBar;
 
     public Envelope(Context context) throws IOException {
         super(context);
         /*vars*/
         mApplication = ((MyApplication)context.getApplicationContext());
-        pdModule = new PdModule();
         isCollapsed = false;
 
         /*ui*/
         LayoutInflater.from(context).inflate(R.layout.layout_envelope, this);
-        FrameLayout envelopeNameContainer = findViewById(R.id.envelopeName_container);
-        envelopeNameContainer.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleNameWidth(), envelopeNameContainer.getLayoutParams().height));
-        envelopeControlsContainer = findViewById(R.id.envelopeControls_container);
-        envelopeControlsContainer.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleControlsWidth(), envelopeControlsContainer.getLayoutParams().height));
+        mEnvelopeName = findViewById(R.id.envelopeNameFrameLayout);
+        mEnvelopeControls = findViewById(R.id.envelopeControlsLinearLayout);
+        mAttackSeekBar = findViewById(R.id.attackSeekBar);
+        mDecaySeekBar = findViewById(R.id.decaySeekBar);
+        mSustainSeekBar = findViewById(R.id.sustainSeekBar);
+        mReleaseSeekBar = findViewById(R.id.releaseSeekBar);
 
-        attackSeekBar = findViewById(R.id.attackSeekBar);
-        decaySeekBar = findViewById(R.id.decaySeekBar);
-        sustainSeekBar = findViewById(R.id.sustainSeekBar);
-        releaseSeekBar = findViewById(R.id.releaseSeekBar);
+        mEnvelopeName.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleNameWidth(), mEnvelopeName.getLayoutParams().height));
+        mEnvelopeControls.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleControlsWidth(), mEnvelopeControls.getLayoutParams().height));
 
-        attackSeekBar.setIndicatorTextDecimalFormat("0");
-        decaySeekBar.setIndicatorTextDecimalFormat("0");
-        sustainSeekBar.setIndicatorTextDecimalFormat("0");
-        releaseSeekBar.setIndicatorTextDecimalFormat("0.00");
-
-        /*initPd*/
-        pdModule.openPatch(context, "envelope");
+        mAttackSeekBar.setIndicatorTextDecimalFormat("0.0");
+        mDecaySeekBar.setIndicatorTextDecimalFormat("0.0");
+        mSustainSeekBar.setIndicatorTextDecimalFormat("0.0");
+        mReleaseSeekBar.setIndicatorTextDecimalFormat("0.0");
 
         /*OnClick*/
-        envelopeNameContainer.setOnClickListener(new OnClickListener() {
+        mEnvelopeName.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 int moduleSize = (isCollapsed)? mApplication.getModuleControlsWidth() : 0;
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(moduleSize, envelopeControlsContainer.getHeight());
-                envelopeControlsContainer.setLayoutParams(params);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(moduleSize, mEnvelopeControls.getHeight());
+                mEnvelopeControls.setLayoutParams(params);
                 isCollapsed = !isCollapsed;
             }
         });
 
-        attackSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
+        mAttackSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("envAttack", leftValue);
+                PdBase.sendFloat("envAttack", leftValue/5);
             }
 
             @Override
@@ -78,10 +74,10 @@ public class Envelope extends FrameLayout {
             public void onStopTrackingTouch(RangeSeekBar view, boolean isLeft) {}
         });
 
-        decaySeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
+        mDecaySeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("envDecay", leftValue);
+                PdBase.sendFloat("envDecay", leftValue/3);
             }
 
             @Override
@@ -90,10 +86,10 @@ public class Envelope extends FrameLayout {
             public void onStopTrackingTouch(RangeSeekBar view, boolean isLeft) {}
         });
 
-        sustainSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
+        mSustainSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("envSustain", leftValue);
+                PdBase.sendFloat("envSustain", leftValue/10);
             }
 
             @Override
@@ -102,10 +98,10 @@ public class Envelope extends FrameLayout {
             public void onStopTrackingTouch(RangeSeekBar view, boolean isLeft) {}
         });
 
-        releaseSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
+        mReleaseSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("envRelease", leftValue);
+                PdBase.sendFloat("envRelease", leftValue*100);
             }
 
             @Override

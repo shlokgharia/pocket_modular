@@ -24,7 +24,7 @@
             android:background="@color/colorRed"/>
 
         <FrameLayout
-            android:id="@+id/envelopeName_container"
+            android:id="@+id/envelopeNameFrameLayout"
             android:layout_width="36dp"
             android:layout_height="match_parent"
             android:background="@color/colorGray"
@@ -48,7 +48,7 @@
         </FrameLayout>
 
         <LinearLayout
-            android:id="@+id/envelopeControls_container"
+            android:id="@+id/envelopeControlsLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorModuleBG"
@@ -78,13 +78,13 @@
                     app:rsb_indicator_padding_right="10dp"
                     app:rsb_indicator_padding_top="5dp"
                     app:rsb_indicator_show_mode="showWhenTouch"
-                    app:rsb_max="500"
+                    app:rsb_max="100"
                     app:rsb_min="0"
                     app:rsb_mode="single"
                     app:rsb_progress_color="@color/colorRed"
                     app:rsb_tick_mark_layout_gravity="bottom"
                     app:rsb_tick_mark_mode="number"
-                    app:rsb_tick_mark_text_array="@array/fiveHundred"
+                    app:rsb_tick_mark_text_array="@array/oneHundred"
                     app:rsb_tick_mark_text_color="@color/colorRed" />
 
 
@@ -119,13 +119,13 @@
                     app:rsb_indicator_padding_right="10dp"
                     app:rsb_indicator_padding_top="5dp"
                     app:rsb_indicator_show_mode="showWhenTouch"
-                    app:rsb_max="300"
+                    app:rsb_max="100"
                     app:rsb_min="0"
                     app:rsb_mode="single"
                     app:rsb_progress_color="@color/colorRed"
                     app:rsb_tick_mark_layout_gravity="bottom"
                     app:rsb_tick_mark_mode="number"
-                    app:rsb_tick_mark_text_array="@array/threeHundred"
+                    app:rsb_tick_mark_text_array="@array/oneHundred"
                     app:rsb_tick_mark_text_color="@color/colorRed" />
 
                 <TextView
@@ -159,13 +159,13 @@
                     app:rsb_indicator_padding_right="10dp"
                     app:rsb_indicator_padding_top="5dp"
                     app:rsb_indicator_show_mode="showWhenTouch"
-                    app:rsb_max="1000"
+                    app:rsb_max="100"
                     app:rsb_min="0"
                     app:rsb_mode="single"
                     app:rsb_progress_color="@color/colorRed"
                     app:rsb_tick_mark_layout_gravity="bottom"
                     app:rsb_tick_mark_mode="number"
-                    app:rsb_tick_mark_text_array="@array/oneThousand"
+                    app:rsb_tick_mark_text_array="@array/oneHundred"
                     app:rsb_tick_mark_text_color="@color/colorRed" />
 
                 <TextView
@@ -200,13 +200,13 @@
                     app:rsb_indicator_padding_right="10dp"
                     app:rsb_indicator_padding_top="5dp"
                     app:rsb_indicator_show_mode="showWhenTouch"
-                    app:rsb_max="1"
+                    app:rsb_max="100"
                     app:rsb_min="0"
                     app:rsb_mode="single"
                     app:rsb_progress_color="@color/colorRed"
                     app:rsb_tick_mark_layout_gravity="bottom"
                     app:rsb_tick_mark_mode="number"
-                    app:rsb_tick_mark_text_array="@array/one"
+                    app:rsb_tick_mark_text_array="@array/oneHundred"
                     app:rsb_tick_mark_text_color="@color/colorRed" />
 
                 <TextView

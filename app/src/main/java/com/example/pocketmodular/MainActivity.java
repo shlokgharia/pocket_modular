@@ -14,30 +14,32 @@ import android.widget.TextView;
 import com.example.pocketmodular.classes.Amplifier;
 import com.example.pocketmodular.classes.Envelope;
 import com.example.pocketmodular.classes.Filter;
+import com.example.pocketmodular.classes.Matrix;
 import com.example.pocketmodular.classes.Note;
 import com.example.pocketmodular.classes.Oscillator;
 
 import org.puredata.android.io.AudioParameters;
 import org.puredata.android.io.PdAudio;
 import org.puredata.core.PdBase;
+import org.puredata.core.utils.IoUtils;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     /*vars*/
-    List <FrameLayout> mPdModules;
-    int mOctave;                    // current octave
-    List<Note> mNotes;              // implements an onTouchListener for each note in the keyboard (see Notes.java)
-    int screenWidth;
+    private List <FrameLayout> mPdModules;
+    private int mOctave;                    // current octave
+    private List<Note> mNotes;              // implements an onTouchListener for each note in the keyboard (see Notes.java)
 
     /*ui*/
-    LinearLayout mModuleContainer;
-    TextView mOctaveDisplay;
-    LinearLayout mKeyboardDisplay;  // this is the final keyboard display
-                                    // it contains multiple octaves
-                                    // each octave of notes is created through layout_notes.xml
+    private LinearLayout mModuleContainer;
+    private TextView mOctaveDisplay;
+    private LinearLayout mKeyboardDisplay;  // this is the final keyboard display
+                                            // it contains multiple octaves
+                                            // each octave of notes is created through layout_notes.xml
 
     /*----Initial Setup----*/
     @Override
@@ -67,16 +69,15 @@ public class MainActivity extends AppCompatActivity {
         // Get & Set screen width
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        screenWidth = displayMetrics.widthPixels;
-        ((MyApplication) getApplication()).setScreenWidth(screenWidth);
+        ((MyApplication) getApplication()).setScreenWidth(displayMetrics.widthPixels);
 
         /*ui*/
         hideNotificationBar();
         mModuleContainer = findViewById(R.id.module_container);
-        mKeyboardDisplay = findViewById(R.id.keyboard_display);
-        mOctaveDisplay = findViewById(R.id.octave_display);
-        Button mOctaveUpBtn = findViewById(R.id.octave_up_btn);
-        Button mOctaveDownBtn = findViewById(R.id.octave_down_btn);
+        mKeyboardDisplay = findViewById(R.id.keyboard);
+        mOctaveDisplay = findViewById(R.id.octaveText);
+        Button mOctaveUpBtn = findViewById(R.id.octaveUpBtn);
+        Button mOctaveDownBtn = findViewById(R.id.octaveDownBtn);
 
         /*constructs keyboard with 3 octaves*/
         List<View> tempOctaveDisplay = new ArrayList<>();
@@ -118,6 +119,12 @@ public class MainActivity extends AppCompatActivity {
 
     /*init for Pd audio and patches*/
     private void initPd() throws IOException {
+        File dir = getFilesDir();
+        File pdPatch = new File(dir, "pocket_modular.pd");
+        int pdZip = getResources().getIdentifier("pocket_modular", "raw", getPackageName());
+        IoUtils.extractZipResource(getResources().openRawResource(pdZip), dir, true);
+        PdBase.openPatch(pdPatch.getAbsolutePath());
+
         int sampleRate = AudioParameters.suggestSampleRate();
         PdAudio.initAudio(sampleRate, 0, 2, 1, true);
     }
@@ -139,6 +146,10 @@ public class MainActivity extends AppCompatActivity {
         Amplifier newAmplifier = new Amplifier(this);
         mModuleContainer.addView(newAmplifier, mModuleContainer.getChildCount());
         mPdModules.add(newAmplifier);
+
+        Matrix matrix = new Matrix(this);
+        mModuleContainer.addView(matrix, mModuleContainer.getChildCount());
+        mPdModules.add(matrix);
     }
 
     private void updateOctave(int offSet) {
@@ -160,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    /*hides notification bar on add module popup*/
+    /*hides notification bar on popup menus*/
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);

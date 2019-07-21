@@ -13,59 +13,53 @@ import com.jaygoo.widget.RangeSeekBar;
 
 import org.puredata.core.PdBase;
 
-import java.io.IOException;
-
 public class Oscillator extends FrameLayout {
     /*vars*/
-    MyApplication mApplication;
-    private PdModule pdModule;
+    private MyApplication mApplication;
     private Boolean isCollapsed;
 
     /*ui*/
-    private LinearLayout oscControlsContainer;
-    private RangeSeekBar waveformSeekBar;
-    private RangeSeekBar tuneSeekBar;
-    private RangeSeekBar pwSeekBar;
-    private RangeSeekBar fmSeekBar;
+    private FrameLayout mOscName;
+    private LinearLayout mOcsControls;
+    private RangeSeekBar mWaveformSeekBar;
+    private RangeSeekBar mTuneSeekBar;
+    private RangeSeekBar mPwSeekBar;
+    private RangeSeekBar mFmSeekBar;
 
-    public Oscillator(Context context) throws IOException {
+    public Oscillator(Context context) {
         super(context);
         /*vars*/
         mApplication = ((MyApplication)context.getApplicationContext());
-        pdModule = new PdModule();
         isCollapsed = false;
 
         /*ui*/
         LayoutInflater.from(context).inflate(R.layout.layout_oscillator, this);
-        FrameLayout oscNameContainer = findViewById(R.id.oscillatorName_container);
-        oscNameContainer.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleNameWidth(), oscNameContainer.getLayoutParams().height));
-        oscControlsContainer = findViewById(R.id.oscillatorControls_container);
-        oscControlsContainer.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleControlsWidth(), oscControlsContainer.getLayoutParams().height));
+        mOscName = findViewById(R.id.oscillatorNameFrameLayout);
+        mOcsControls = findViewById(R.id.oscillatorControlsLinearLayout);
+        mWaveformSeekBar = findViewById(R.id.waveformSeekBar);
+        mTuneSeekBar = findViewById(R.id.tuneSeekBar);
+        mPwSeekBar = findViewById(R.id.pwSeekBar);
+        mFmSeekBar = findViewById(R.id.fmSeekBar);
 
-        waveformSeekBar = findViewById(R.id.waveformSeekBar);
-        tuneSeekBar = findViewById(R.id.tuneSeekBar);
-        pwSeekBar = findViewById(R.id.pwSeekBar);
-        fmSeekBar = findViewById(R.id.fmSeekBar);
+        mOscName.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleNameWidth(), mOscName.getLayoutParams().height));
+        mOcsControls.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleControlsWidth(), mOcsControls.getLayoutParams().height));
 
-        tuneSeekBar.setIndicatorTextDecimalFormat("0.0");
-        pwSeekBar.setIndicatorTextDecimalFormat("0.0");
-        fmSeekBar.setIndicatorTextDecimalFormat("0.0");
-
-        /*initPd*/
-        pdModule.openPatch(context, "oscillator");
+        mTuneSeekBar.setIndicatorTextDecimalFormat("0.0");
+        mPwSeekBar.setIndicatorTextDecimalFormat("0.0");
+        mFmSeekBar.setIndicatorTextDecimalFormat("0.0");
 
         /*OnClick*/
-        oscNameContainer.setOnClickListener(new OnClickListener() {
+        mOscName.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 int moduleSize = (isCollapsed)? mApplication.getModuleControlsWidth() : 0;
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(moduleSize, oscControlsContainer.getHeight());
-                oscControlsContainer.setLayoutParams(params);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(moduleSize, mOcsControls.getHeight());
+                mOcsControls.setLayoutParams(params);
                 isCollapsed = !isCollapsed;
             }
         });
 
-        waveformSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
+        mWaveformSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
                 if (leftValue == 0) {
@@ -93,7 +87,7 @@ public class Oscillator extends FrameLayout {
             public void onStopTrackingTouch(RangeSeekBar view, boolean isLeft) {}
         });
 
-        tuneSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
+        mTuneSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
 
@@ -105,7 +99,7 @@ public class Oscillator extends FrameLayout {
             public void onStopTrackingTouch(RangeSeekBar view, boolean isLeft) {}
         });
 
-        pwSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
+        mPwSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
 
@@ -117,7 +111,7 @@ public class Oscillator extends FrameLayout {
             public void onStopTrackingTouch(RangeSeekBar view, boolean isLeft) {}
         });
 
-        fmSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
+        mFmSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
 

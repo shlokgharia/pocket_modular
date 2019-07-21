@@ -1,64 +1,42 @@
 <resources>
     <string name="app_name">PocketModular</string>
 
-    <string-array name="modules">
-        <item>Oscillator</item>
-    </string-array>
+    <string-array name="sources">
+        <item>Empty</item>
 
-    <string-array name="one">
-        <item>0</item>
-        <item>0.25</item>
-        <item>0.50</item>
-        <item>0.75</item>
-        <item>1</item>
-    </string-array>
+        <item>osc_OUT_1</item>
+        <item>osc_OUT_2</item>
+        <item>osc_OUT_3</item>
+        <item>osc_OUT_4</item>
 
-    <string-array name="four">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-    </string-array>
+        <item>flt_OUT_1</item>
+        <item>flt_OUT_2</item>
+        <item>flt_OUT_3</item>
+        <item>flt_OUT_4</item>
 
-    <string-array name="oneHundred">
-        <item>0</item>
-        <item>25</item>
-        <item>50</item>
-        <item>75</item>
-        <item>100</item>
-    </string-array>
+        <item>env_OUT_1</item>
+        <item>env_OUT_2</item>
+        <item>env_OUT_3</item>
+        <item>env_OUT_4</item>
+        <item>env_OUT_5</item>
+        <item>env_OUT_6</item>
 
-    <string-array name="threeHundred">
-        <item>0</item>
-        <item>75</item>
-        <item>150</item>
-        <item>225</item>
-        <item>300</item>
-    </string-array>
+        <item>amp_OUT_1</item>
+        <item>amp_OUT_2</item>
+        <item>amp_OUT_3</item>
+        <item>amp_OUT_4</item>
+        <item>amp_OUT_5</item>
+        <item>amp_OUT_6</item>
 
-    <string-array name="fiveHundred">
-        <item>0</item>
-        <item>125</item>
-        <item>250</item>
-        <item>375</item>
-        <item>500</item>
-    </string-array>
+        <item>midi_PITCH_1</item>
+        <item>midi_PITCH_2</item>
+        <item>midi_PITCH_3</item>
+        <item>midi_PITCH_4</item>
 
-    <string-array name="oneThousand">
-        <item>0</item>
-        <item>250</item>
-        <item>500</item>
-        <item>750</item>
-        <item>1000</item>
-    </string-array>
-
-    <string-array name="fourThousand">
-        <item>0</item>
-        <item>1000</item>
-        <item>2000</item>
-        <item>3000</item>
-        <item>4000</item>
+        <item>midi_GATE_1</item>
+        <item>midi_GATE_2</item>
+        <item>midi_GATE_3</item>
+        <item>midi_GATE_4</item>
     </string-array>
 
     <string-array name="waveshapeArray">
@@ -75,6 +53,12 @@
         <item>Band</item>
     </string-array>
 
-
+    <string-array name="oneHundred">
+        <item>0</item>
+        <item>25</item>
+        <item>50</item>
+        <item>75</item>
+        <item>100</item>
+    </string-array>
 
 </resources>

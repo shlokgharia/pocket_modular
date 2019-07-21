@@ -24,7 +24,7 @@
             android:background="@color/colorBlue"/>
 
         <FrameLayout
-            android:id="@+id/oscillatorName_container"
+            android:id="@+id/oscillatorNameFrameLayout"
             android:layout_width="36dp"
             android:layout_height="match_parent"
             android:background="@color/colorGray"
@@ -48,7 +48,7 @@
         </FrameLayout>
 
         <LinearLayout
-            android:id="@+id/oscillatorControls_container"
+            android:id="@+id/oscillatorControlsLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorModuleBG"

@@ -17,49 +17,46 @@ import java.io.IOException;
 
 public class Amplifier extends FrameLayout {
     /*vars*/
-    MyApplication mApplication;
-    private PdModule pdModule;
+    private MyApplication mApplication;
     private Boolean isCollapsed;
 
     /*ui*/
-    private LinearLayout amplifierControlsContainer;
-    private RangeSeekBar volumeSeekBar;
+    private FrameLayout mAmplifierName;
+    private LinearLayout mAmplifierControls;
+    private RangeSeekBar mVolumeSeekBar;
 
     public Amplifier(Context context) throws IOException {
         super(context);
         /*vars*/
         mApplication = ((MyApplication)context.getApplicationContext());
-        pdModule = new PdModule();
         isCollapsed = false;
 
         /*ui*/
         LayoutInflater.from(context).inflate(R.layout.layout_amplifier, this);
-        FrameLayout filterNameContainer = findViewById(R.id.amplifierName_container);
-        filterNameContainer.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleNameWidth(), filterNameContainer.getLayoutParams().height));
-        amplifierControlsContainer = findViewById(R.id.amplifierControls_container);
-        amplifierControlsContainer.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleControlsWidth(), amplifierControlsContainer.getLayoutParams().height));
+        mAmplifierName = findViewById(R.id.amplifierName_container);
+        mAmplifierControls = findViewById(R.id.amplifierControls_container);
+        mVolumeSeekBar = findViewById(R.id.volumeSeekBar);
 
-        volumeSeekBar = findViewById(R.id.volumeSeekBar);
-        volumeSeekBar.setIndicatorTextDecimalFormat("0.0");
+        mAmplifierName.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleNameWidth(), mAmplifierName.getLayoutParams().height));
+        mAmplifierControls.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleControlsWidth()/2, mAmplifierControls.getLayoutParams().height));
 
-        /*initPd*/
-        pdModule.openPatch(context, "amplifier");
+        mVolumeSeekBar.setIndicatorTextDecimalFormat("0.0");
 
         /*OnClick*/
-        filterNameContainer.setOnClickListener(new OnClickListener() {
+        mAmplifierName.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 int moduleSize = (isCollapsed)? mApplication.getModuleControlsWidth() : 0;
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(moduleSize, amplifierControlsContainer.getHeight());
-                amplifierControlsContainer.setLayoutParams(params);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(moduleSize, mAmplifierControls.getHeight());
+                mAmplifierControls.setLayoutParams(params);
                 isCollapsed = !isCollapsed;
             }
         });
 
-        volumeSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
+        mVolumeSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("ampVolume", leftValue);
+                PdBase.sendFloat("ampVolume", leftValue/100);
             }
 
             @Override

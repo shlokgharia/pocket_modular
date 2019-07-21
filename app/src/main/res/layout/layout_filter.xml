@@ -24,7 +24,7 @@
             android:background="@color/colorGreen"/>
 
         <FrameLayout
-            android:id="@+id/filterName_container"
+            android:id="@+id/filterNameFrameLayout"
             android:layout_width="36dp"
             android:layout_height="match_parent"
             android:background="@color/colorGray"
@@ -48,7 +48,7 @@
         </FrameLayout>
 
         <LinearLayout
-            android:id="@+id/filterControls_container"
+            android:id="@+id/filterControlsLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorModuleBG"
@@ -119,13 +119,13 @@
                     app:rsb_indicator_padding_right="10dp"
                     app:rsb_indicator_padding_top="5dp"
                     app:rsb_indicator_show_mode="showWhenTouch"
-                    app:rsb_max="4000"
+                    app:rsb_max="100"
                     app:rsb_min="0"
                     app:rsb_mode="single"
                     app:rsb_progress_color="@color/colorBlue"
                     app:rsb_tick_mark_layout_gravity="bottom"
                     app:rsb_tick_mark_mode="number"
-                    app:rsb_tick_mark_text_array="@array/fourThousand"
+                    app:rsb_tick_mark_text_array="@array/oneHundred"
                     app:rsb_tick_mark_text_color="@color/colorBlue" />
 
                 <TextView
@@ -160,13 +160,13 @@
                     app:rsb_indicator_padding_right="10dp"
                     app:rsb_indicator_padding_top="5dp"
                     app:rsb_indicator_show_mode="showWhenTouch"
-                    app:rsb_max="4"
+                    app:rsb_max="100"
                     app:rsb_min="0"
                     app:rsb_mode="single"
                     app:rsb_progress_color="@color/colorBlue"
                     app:rsb_tick_mark_layout_gravity="bottom"
                     app:rsb_tick_mark_mode="number"
-                    app:rsb_tick_mark_text_array="@array/four"
+                    app:rsb_tick_mark_text_array="@array/oneHundred"
                     app:rsb_tick_mark_text_color="@color/colorBlue" />
 
                 <TextView

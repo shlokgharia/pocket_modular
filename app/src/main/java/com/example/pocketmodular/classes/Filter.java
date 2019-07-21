@@ -17,52 +17,48 @@ import java.io.IOException;
 
 public class Filter extends FrameLayout {
     /*vars*/
-    MyApplication mApplication;
-    private PdModule pdModule;
+    private MyApplication mApplication;
     private Boolean isCollapsed;
 
     /*ui*/
-    private LinearLayout filterControlsContainer;
-    private RangeSeekBar frequencySeekBar;
-    private RangeSeekBar resonanceSeekBar;
-    private RangeSeekBar filterTypeSeekBar;
+    private FrameLayout mFilterName;
+    private LinearLayout mFilterControls;
+    private RangeSeekBar mFrequencySeekBar;
+    private RangeSeekBar mResonanceSeekBar;
+    private RangeSeekBar mFilterTypeSeekBar;
 
     public Filter(Context context) throws IOException {
         super(context);
         /*vars*/
         mApplication = ((MyApplication)context.getApplicationContext());
-        pdModule = new PdModule();
         isCollapsed = false;
 
         /*ui*/
         LayoutInflater.from(context).inflate(R.layout.layout_filter, this);
-        FrameLayout filterNameContainer = findViewById(R.id.filterName_container);
-        filterNameContainer.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleNameWidth(), filterNameContainer.getLayoutParams().height));
-        filterControlsContainer = findViewById(R.id.filterControls_container);
-        filterControlsContainer.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleControlsWidth(), filterControlsContainer.getLayoutParams().height));
+        mFilterName = findViewById(R.id.filterNameFrameLayout);
+        mFilterControls = findViewById(R.id.filterControlsLinearLayout);
+        mFilterTypeSeekBar = findViewById(R.id.filterTypeSeekBar);
+        mFrequencySeekBar = findViewById(R.id.frequencySeekBar);
+        mResonanceSeekBar = findViewById(R.id.resonanceSeekBar);
 
-        filterTypeSeekBar = findViewById(R.id.filterTypeSeekBar);
-        frequencySeekBar = findViewById(R.id.frequencySeekBar);
-        resonanceSeekBar = findViewById(R.id.resonanceSeekBar);
+        mFilterName.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleNameWidth(), mFilterName.getLayoutParams().height));
+        mFilterControls.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleControlsWidth(), mFilterControls.getLayoutParams().height));
 
-        frequencySeekBar.setIndicatorTextDecimalFormat("0");
-        resonanceSeekBar.setIndicatorTextDecimalFormat("0.00");
-
-        /*initPd*/
-        pdModule.openPatch(context, "filter");
+        mFrequencySeekBar.setIndicatorTextDecimalFormat("0.0");
+        mResonanceSeekBar.setIndicatorTextDecimalFormat("0.0");
 
         /*OnClick*/
-        filterNameContainer.setOnClickListener(new OnClickListener() {
+        mFilterName.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 int moduleSize = (isCollapsed)? mApplication.getModuleControlsWidth() : 0;
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(moduleSize, filterControlsContainer.getHeight());
-                filterControlsContainer.setLayoutParams(params);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(moduleSize, mFilterControls.getHeight());
+                mFilterControls.setLayoutParams(params);
                 isCollapsed = !isCollapsed;
             }
         });
 
-        filterTypeSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
+        mFilterTypeSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
                 if (leftValue == 0) {
@@ -90,10 +86,10 @@ public class Filter extends FrameLayout {
             public void onStopTrackingTouch(RangeSeekBar view, boolean isLeft) {}
         });
 
-        frequencySeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
+        mFrequencySeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("fltFrequency", leftValue);
+                PdBase.sendFloat("fltFrequency", leftValue/40);
             }
 
             @Override
@@ -102,10 +98,10 @@ public class Filter extends FrameLayout {
             public void onStopTrackingTouch(RangeSeekBar view, boolean isLeft) {}
         });
 
-        resonanceSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
+        mResonanceSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("fltResonance", leftValue);
+                PdBase.sendFloat("fltResonance", leftValue*25);
             }
 
             @Override
