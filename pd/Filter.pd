@@ -1,0 +1,51 @@
+#N canvas 904 321 628 522 10;
+#X obj 158 350 *~;
+#X obj 173 320 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 157 225 bp~ 440 440 1;
+#X floatatom 232 124 5 0 0 0 - - -;
+#X obj 21 344 *~;
+#X obj 36 320 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 21 228 lop~ 440;
+#X obj 359 230 hip~;
+#X obj 358 346 *~;
+#X obj 373 315 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 19 74 Input;
+#X text 381 73 Filter frequency;
+#X obj 232 100 receive fltResonance;
+#X obj 36 279 receive fltLoOn;
+#X obj 173 281 receive fltBandOn;
+#X obj 373 284 receive fltHighOn;
+#X obj 380 100 receive fltFrequency;
+#X floatatom 380 128 5 0 0 0 - - -;
+#X text 235 72 Filter Resonance;
+#X text 408 313 fltLoOn \, fltBandOn \, fltHighOn: Control if that
+filter is on;
+#X obj 158 398 snapshot~;
+#X obj 20 118 sig~;
+#X obj 20 95 receive fltIn;
+#X obj 158 425 send fltOut;
+#X connect 0 0 20 0;
+#X connect 1 0 0 1;
+#X connect 2 0 0 0;
+#X connect 3 0 2 2;
+#X connect 4 0 20 0;
+#X connect 5 0 4 1;
+#X connect 6 0 4 0;
+#X connect 7 0 8 0;
+#X connect 8 0 20 0;
+#X connect 9 0 8 1;
+#X connect 12 0 3 0;
+#X connect 13 0 5 0;
+#X connect 14 0 1 0;
+#X connect 15 0 9 0;
+#X connect 16 0 17 0;
+#X connect 17 0 7 1;
+#X connect 17 0 6 1;
+#X connect 20 0 23 0;
+#X connect 21 0 6 0;
+#X connect 21 0 2 0;
+#X connect 21 0 7 0;
+#X connect 22 0 21 0;
