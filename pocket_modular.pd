@@ -2850,20 +2850,20 @@ filter is on;
 #X restore 9 1295 pd flt1;
 #N canvas 0 23 450 300 master_amp 0;
 #X obj 91 218 *~;
-#X obj 194 90 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+#X obj 268 107 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 11800 1;
 #X text 94 17 Input;
 #X text 190 16 Volume in: 0 - 1;
 #X obj 113 261 dac~;
-#X obj 191 37 receive~ master_amp_GAIN;
 #X obj 35 43 receive~ master_amp_IN;
 #X obj 67 70 catch~ master_amp_IN;
+#X obj 191 37 receive master_amp_GAIN;
 #X connect 0 0 4 0;
 #X connect 0 0 4 1;
 #X connect 1 0 0 1;
-#X connect 5 0 1 0;
+#X connect 5 0 0 0;
 #X connect 6 0 0 0;
-#X connect 7 0 0 0;
+#X connect 7 0 1 0;
 #X restore 303 1351 pd master_amp;
 #X obj 554 157 *~ 1;
 #N canvas 0 23 1440 782 channel_IN_2 0;
