@@ -27,7 +27,7 @@
                     android:layout_width="28dp"
                     android:layout_height="84dp"
                     app:rsb_gravity="center"
-                    app:rsb_indicator_background_color="@color/colorBlue"
+                    app:rsb_indicator_background_color="@color/colorDarkBG"
                     app:rsb_indicator_padding_bottom="5dp"
                     app:rsb_indicator_padding_left="10dp"
                     app:rsb_indicator_padding_right="10dp"
@@ -36,7 +36,7 @@
                     app:rsb_max="100"
                     app:rsb_min="0"
                     app:rsb_mode="single"
-                    app:rsb_progress_color="@color/colorBlue"
+                    app:rsb_progress_color="@color/colorDarkBG"
                     android:layout_weight="1"/>
 
                 <Spinner

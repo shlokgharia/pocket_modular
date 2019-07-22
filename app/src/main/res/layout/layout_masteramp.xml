@@ -20,16 +20,16 @@
         <View
             android:layout_width="4dp"
             android:layout_height="match_parent"
-            android:background="@color/colorOrange"/>
+            android:background="@color/colorYellow"/>
 
         <FrameLayout
-            android:id="@+id/amplifierNameFrameLayout"
+            android:id="@+id/masterAmpNameFrameLayout"
             android:layout_width="36dp"
             android:layout_height="match_parent"
             android:background="@color/colorGray">
 
             <TextView
-                android:id="@+id/amplifierNameText"
+                android:id="@+id/masterAmpNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -38,14 +38,14 @@
                 android:rotation="-90"
                 android:scaleX="4"
                 android:scaleY="4"
-                android:text="AMP"
+                android:text="master"
                 android:textColor="#FFF"
                 android:textSize="6dp" />
 
         </FrameLayout>
 
         <LinearLayout
-            android:id="@+id/amplifierControlsLinearLayout"
+            android:id="@+id/masterAmpControlsLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorModuleBG"
@@ -62,14 +62,14 @@
                 android:layout_weight="1">
 
                 <com.jaygoo.widget.VerticalRangeSeekBar
-                    android:id="@+id/volumeSeekBar"
+                    android:id="@+id/masterSeekBar"
                     android:layout_width="28dp"
                     android:layout_height="match_parent"
-                    android:layout_above="@+id/volumeSeekText"
+                    android:layout_above="@+id/masterSeekText"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="6dp"
                     app:rsb_gravity="center"
-                    app:rsb_indicator_background_color="@color/colorOrange"
+                    app:rsb_indicator_background_color="@color/colorYellow"
                     app:rsb_indicator_padding_bottom="5dp"
                     app:rsb_indicator_padding_left="10dp"
                     app:rsb_indicator_padding_right="10dp"
@@ -78,19 +78,19 @@
                     app:rsb_max="100"
                     app:rsb_min="0"
                     app:rsb_mode="single"
-                    app:rsb_progress_color="@color/colorOrange"
+                    app:rsb_progress_color="@color/colorYellow"
                     app:rsb_tick_mark_layout_gravity="bottom"
                     app:rsb_tick_mark_mode="number"
                     app:rsb_tick_mark_text_array="@array/oneHundred"
-                    app:rsb_tick_mark_text_color="@color/colorOrange" />
+                    app:rsb_tick_mark_text_color="@color/colorYellow" />
 
 
                 <TextView
-                    android:id="@+id/volumeSeekText"
+                    android:id="@+id/masterSeekText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:text="VOLUME"
+                    android:text="MASTER"
                     android:layout_centerHorizontal="true"/>
             </RelativeLayout>
 

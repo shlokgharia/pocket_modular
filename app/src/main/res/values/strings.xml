@@ -28,6 +28,65 @@
         <item>amp_OUT_5</item>
         <item>amp_OUT_6</item>
 
+    </string-array>
+
+    <string-array name="destinations">
+        <item>Empty</item>
+
+        <item>flt_IN_1</item>
+        <item>flt_IN_2</item>
+        <item>flt_IN_3</item>
+        <item>flt_IN_4</item>
+
+        <item>flt_CUT_1</item>
+        <item>flt_CUT_2</item>
+        <item>flt_CUT_3</item>
+        <item>flt_CUT_4</item>
+
+        <item>flt_RES_1</item>
+        <item>flt_RES_2</item>
+        <item>flt_RES_3</item>
+        <item>flt_RES_4</item>
+
+        <item>flt_FEED_1</item>
+        <item>flt_FEED_2</item>
+        <item>flt_FEED_3</item>
+        <item>flt_FEED_4</item>
+
+        <item>env_TRIG_1</item>
+        <item>env_TRIG_2</item>
+        <item>env_TRIG_3</item>
+        <item>env_TRIG_4</item>
+        <item>env_TRIG_5</item>
+        <item>env_TRIG_6</item>
+
+        <item>amp_IN_1</item>
+        <item>amp_IN_2</item>
+        <item>amp_IN_3</item>
+        <item>amp_IN_4</item>
+        <item>amp_IN_5</item>
+        <item>amp_IN_6</item>
+
+        <item>amp_GAIN_1</item>
+        <item>amp_GAIN_2</item>
+        <item>amp_GAIN_3</item>
+        <item>amp_GAIN_4</item>
+        <item>amp_GAIN_5</item>
+        <item>amp_GAIN_6</item>
+
+        <item>amp_FEED_1</item>
+        <item>amp_FEED_2</item>
+        <item>amp_FEED_3</item>
+        <item>amp_FEED_4</item>
+        <item>amp_FEED_5</item>
+        <item>amp_FEED_6</item>
+
+        <item>master_amp_IN</item>
+    </string-array>
+
+    <string-array name="midiSources">
+        <item>--midi--</item>
+
         <item>midi_PITCH_1</item>
         <item>midi_PITCH_2</item>
         <item>midi_PITCH_3</item>
@@ -37,6 +96,15 @@
         <item>midi_GATE_2</item>
         <item>midi_GATE_3</item>
         <item>midi_GATE_4</item>
+    </string-array>
+
+    <string-array name="midiDestinations">
+        <item>--midi--</item>
+
+        <item>osc_PITCH_1</item>
+        <item>osc_PITCH_2</item>
+        <item>osc_PITCH_3</item>
+        <item>osc_PITCH_4</item>
     </string-array>
 
     <string-array name="waveshapeArray">
@@ -53,6 +121,13 @@
         <item>Band</item>
     </string-array>
 
+    <string-array name="voicesArray">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
     <string-array name="oneHundred">
         <item>0</item>
         <item>25</item>
@@ -60,5 +135,7 @@
         <item>75</item>
         <item>100</item>
     </string-array>
+
+
 
 </resources>

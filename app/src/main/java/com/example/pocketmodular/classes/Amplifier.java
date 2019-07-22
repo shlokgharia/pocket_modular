@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.pocketmodular.MyApplication;
 import com.example.pocketmodular.R;
@@ -13,19 +14,18 @@ import com.jaygoo.widget.RangeSeekBar;
 
 import org.puredata.core.PdBase;
 
-import java.io.IOException;
-
 public class Amplifier extends FrameLayout {
     /*vars*/
     private MyApplication mApplication;
     private Boolean isCollapsed;
 
     /*ui*/
-    private FrameLayout mAmplifierName;
+    private TextView mAmplifierNameText;
+    private FrameLayout mAmplifierNameLayout;
     private LinearLayout mAmplifierControls;
     private RangeSeekBar mVolumeSeekBar;
 
-    public Amplifier(Context context) throws IOException {
+    public Amplifier(Context context, final int moduleID) {
         super(context);
         /*vars*/
         mApplication = ((MyApplication)context.getApplicationContext());
@@ -33,20 +33,22 @@ public class Amplifier extends FrameLayout {
 
         /*ui*/
         LayoutInflater.from(context).inflate(R.layout.layout_amplifier, this);
-        mAmplifierName = findViewById(R.id.amplifierName_container);
-        mAmplifierControls = findViewById(R.id.amplifierControls_container);
+        mAmplifierNameText = findViewById(R.id.amplifierNameText);
+        mAmplifierNameLayout = findViewById(R.id.amplifierNameFrameLayout);
+        mAmplifierControls = findViewById(R.id.amplifierControlsLinearLayout);
         mVolumeSeekBar = findViewById(R.id.volumeSeekBar);
 
-        mAmplifierName.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleNameWidth(), mAmplifierName.getLayoutParams().height));
+        mAmplifierNameText.setText("amp " + moduleID);
+        mAmplifierNameLayout.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleNameWidth(), mAmplifierNameLayout.getLayoutParams().height));
         mAmplifierControls.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleControlsWidth()/2, mAmplifierControls.getLayoutParams().height));
 
         mVolumeSeekBar.setIndicatorTextDecimalFormat("0.0");
 
         /*OnClick*/
-        mAmplifierName.setOnClickListener(new OnClickListener() {
+        mAmplifierNameLayout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                int moduleSize = (isCollapsed)? mApplication.getModuleControlsWidth() : 0;
+                int moduleSize = (isCollapsed)? mApplication.getModuleControlsWidth()/2 : 0;
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(moduleSize, mAmplifierControls.getHeight());
                 mAmplifierControls.setLayoutParams(params);
                 isCollapsed = !isCollapsed;
@@ -56,7 +58,7 @@ public class Amplifier extends FrameLayout {
         mVolumeSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("ampVolume", leftValue/100);
+                PdBase.sendFloat("ampVolume_" + moduleID, leftValue/100);
             }
 
             @Override
