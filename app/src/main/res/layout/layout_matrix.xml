@@ -12,6 +12,7 @@
         android:orientation="horizontal"
         android:clipChildren="false"
         android:clipToPadding="false">
+
         <View
             android:layout_width="4dp"
             android:layout_height="match_parent"
@@ -19,15 +20,14 @@
         <View
             android:layout_width="4dp"
             android:layout_height="match_parent"
-            android:background="@color/colorBlue"/>
+            android:background="@color/colorModuleBG"/>
+
         <FrameLayout
             android:id="@+id/matrixNameFrameLayout"
             android:layout_width="36dp"
             android:layout_height="match_parent"
-            android:background="@color/colorGray"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:background="@color/colorGray">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
                 android:rotation="-90"
                 android:scaleX="4"
                 android:scaleY="4"
-                android:text="MATRIX"
+                android:text="matrix"
                 android:textColor="#FFF"
                 android:textSize="6dp" />
         </FrameLayout>

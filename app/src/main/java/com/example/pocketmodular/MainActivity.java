@@ -14,7 +14,9 @@ import android.widget.TextView;
 import com.example.pocketmodular.classes.Amplifier;
 import com.example.pocketmodular.classes.Envelope;
 import com.example.pocketmodular.classes.Filter;
+import com.example.pocketmodular.classes.MasterAmp;
 import com.example.pocketmodular.classes.Matrix;
+import com.example.pocketmodular.classes.Midi;
 import com.example.pocketmodular.classes.Note;
 import com.example.pocketmodular.classes.Oscillator;
 
@@ -53,11 +55,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
         initGui();
-        try {
-            createRack();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        createRack();
     }
 
     private void initGui() {
@@ -103,15 +101,21 @@ public class MainActivity extends AppCompatActivity {
         mOctaveUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateOctave(1);
-                mOctaveDisplay.setText(Integer.parseInt(mOctaveDisplay.getText().toString())+1 + "");
+                int curOctaveText = Integer.parseInt(mOctaveDisplay.getText().toString());
+                if (curOctaveText < 3) {
+                    updateOctave(1);
+                    mOctaveDisplay.setText(curOctaveText + 1 + "");
+                }
             }
         });
         mOctaveDownBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateOctave(-1);
-                mOctaveDisplay.setText(Integer.parseInt(mOctaveDisplay.getText().toString())-1 + "");
+                int curOctaveText = Integer.parseInt(mOctaveDisplay.getText().toString());
+                if (curOctaveText > -3) {
+                    updateOctave(-1);
+                    mOctaveDisplay.setText(curOctaveText - 1 + "");
+                }
             }
         });
 
@@ -125,27 +129,42 @@ public class MainActivity extends AppCompatActivity {
         IoUtils.extractZipResource(getResources().openRawResource(pdZip), dir, true);
         PdBase.openPatch(pdPatch.getAbsolutePath());
 
-        int sampleRate = AudioParameters.suggestSampleRate();
-        PdAudio.initAudio(sampleRate, 0, 2, 1, true);
+        PdAudio.initAudio(16000, 0, 2, 1, true);
     }
 
     /*----Helper Functions----*/
-    private void createRack() throws IOException {
-        Oscillator newMidiModule = new Oscillator(this);
-        mModuleContainer.addView(newMidiModule, mModuleContainer.getChildCount());
-        mPdModules.add(newMidiModule);
+    private void createRack() {
+        for (int oscQuantity = 1; oscQuantity <= 4; oscQuantity++) {
+            Oscillator newMidiModule = new Oscillator(this, oscQuantity);
+            mModuleContainer.addView(newMidiModule, mModuleContainer.getChildCount());
+            mPdModules.add(newMidiModule);
+        }
 
-        Filter newFilter = new Filter(this);
-        mModuleContainer.addView(newFilter, mModuleContainer.getChildCount());
-        mPdModules.add(newFilter);
+        for (int fltQuantity = 1; fltQuantity <= 4; fltQuantity++) {
+            Filter newFilter = new Filter(this, fltQuantity);
+            mModuleContainer.addView(newFilter, mModuleContainer.getChildCount());
+            mPdModules.add(newFilter);
+        }
 
-        Envelope newEnvelope = new Envelope(this);
-        mModuleContainer.addView(newEnvelope, mModuleContainer.getChildCount());
-        mPdModules.add(newEnvelope);
+        for (int envQuantity = 1; envQuantity <= 6; envQuantity++) {
+            Envelope newEnvelope = new Envelope(this, envQuantity);
+            mModuleContainer.addView(newEnvelope, mModuleContainer.getChildCount());
+            mPdModules.add(newEnvelope);
+        }
 
-        Amplifier newAmplifier = new Amplifier(this);
-        mModuleContainer.addView(newAmplifier, mModuleContainer.getChildCount());
-        mPdModules.add(newAmplifier);
+        for (int ampQuantity = 1; ampQuantity <= 6; ampQuantity++) {
+            Amplifier newAmplifier = new Amplifier(this, ampQuantity);
+            mModuleContainer.addView(newAmplifier, mModuleContainer.getChildCount());
+            mPdModules.add(newAmplifier);
+        }
+
+        MasterAmp masterAmp = new MasterAmp(this);
+        mModuleContainer.addView(masterAmp, mModuleContainer.getChildCount());
+        mPdModules.add(masterAmp);
+
+        Midi midi = new Midi(this);
+        mModuleContainer.addView(midi, mModuleContainer.getChildCount());
+        mPdModules.add(midi);
 
         Matrix matrix = new Matrix(this);
         mModuleContainer.addView(matrix, mModuleContainer.getChildCount());

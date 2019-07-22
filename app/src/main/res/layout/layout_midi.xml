@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:orientation="horizontal">
@@ -20,16 +19,16 @@
         <View
             android:layout_width="4dp"
             android:layout_height="match_parent"
-            android:background="@color/colorBlue"/>
+            android:background="@color/colorPurple"/>
 
         <FrameLayout
-            android:id="@+id/oscillatorNameFrameLayout"
+            android:id="@+id/midiNameFrameLayout"
             android:layout_width="36dp"
             android:layout_height="match_parent"
             android:background="@color/colorGray">
 
             <TextView
-                android:id="@+id/oscillatorNameText"
+                android:id="@+id/midiNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -38,14 +37,14 @@
                 android:rotation="-90"
                 android:scaleX="4"
                 android:scaleY="4"
-                android:text="OSC"
+                android:text="midi"
                 android:textColor="#FFF"
                 android:textSize="6dp" />
 
         </FrameLayout>
 
         <LinearLayout
-            android:id="@+id/oscillatorControlsLinearLayout"
+            android:id="@+id/midiControlsLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorModuleBG"
@@ -61,38 +60,48 @@
                 android:orientation="vertical"
                 android:layout_weight="1">
 
-                <com.jaygoo.widget.VerticalRangeSeekBar
-                    android:id="@+id/waveformSeekBar"
-                    android:layout_width="28dp"
-                    android:layout_height="match_parent"
-                    android:layout_above="@+id/waveformSeekText"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="6dp"
-                    app:rsb_gravity="center"
-                    app:rsb_indicator_show_mode="alwaysHide"
-                    app:rsb_step_color="@color/colorBlue"
-                    app:rsb_step_height="10dp"
-                    app:rsb_step_width="2dp"
-                    app:rsb_max="3"
-                    app:rsb_min="0"
-                    app:rsb_steps="3"
-                    app:rsb_step_auto_bonding="true"
-                    app:rsb_mode="single"
-                    app:rsb_progress_color="@color/colorBlue"
-                    app:rsb_tick_mark_layout_gravity="bottom"
-                    app:rsb_tick_mark_mode="other"
-                    app:rsb_tick_mark_text_array="@array/waveshapeArray"
-                    app:rsb_tick_mark_text_margin="20dp"
-                    app:rsb_tick_mark_text_color="@color/colorBlue" />
+                <LinearLayout
+                    android:id="@+id/midiBtns"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal"
+                    android:gravity="center">
 
+                    <Button
+                        android:id="@+id/voicesDownBtn"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:backgroundTint="@color/colorGray"
+                        android:text="-"
+                        android:textColor="#FFF"
+                        android:textSize="24dp" />
+
+                    <TextView
+                        android:id="@+id/voicesText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textColor="@color/colorGray"
+                        android:textSize="24dp" />
+
+                    <Button
+                        android:id="@+id/voicesUpBtn"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:backgroundTint="@color/colorGray"
+                        android:text="+"
+                        android:textColor="#FFF"
+                        android:textSize="24dp" />
+
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/waveformSeekText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:text="SHAPE"
-                    android:inputType="text"
+                    android:layout_below="@+id/midiBtns"
+                    android:layout_marginTop="16dp"
+                    android:text="VOICES"
                     android:layout_centerHorizontal="true"/>
             </RelativeLayout>
 

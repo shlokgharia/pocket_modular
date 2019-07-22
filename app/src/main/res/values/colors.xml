@@ -2,7 +2,11 @@
 <resources>
     <color name="colorRed">#CB4173</color>
     <color name="colorGreen">#A5D19C</color>
+    <color name="colorGreenDark">#5A964F</color>
     <color name="colorBlue">#08909A</color>
+    <color name="colorOrange">#CB7841</color>
+    <color name="colorPurple">#6A41CB</color>
+    <color name="colorYellow">#CBA941</color>
     <color name="colorGray">#565455</color>
 
     <color name="colorModuleBG">#C9C8CE</color>
