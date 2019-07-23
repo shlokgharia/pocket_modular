@@ -1,7 +1,6 @@
 package com.example.pocketmodular.classes;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -59,7 +58,7 @@ public class Matrix extends FrameLayout {
         });
 
         /*Creates*/
-        for (int moduleID = 1; moduleID <= 20; moduleID++) {
+        for (int moduleID = 1; moduleID <= 24; moduleID++) {
             Routing newRoutedModule = new Routing(context, moduleID, false);
             mRoutedModules.add(newRoutedModule);
             mMatrixRoutingLayout.addView(newRoutedModule, mMatrixRoutingLayout.getChildCount());
@@ -77,27 +76,36 @@ public class Matrix extends FrameLayout {
         private Spinner mSources;
         private Spinner mDestinations;
         private RangeSeekBar mDepthSeekBar;
-        private String modMatrixType;
+        private String modMatrixTypeSource;
+        private String modMatrixTypeDestination;
 
-         public Routing(Context context, final int modMatrixChannel, boolean isMidi) {
+         public Routing(Context context, final int modMatrixChannel, final boolean isMidi) {
              super(context);
              /*ui*/
-             LayoutInflater.from(context).inflate(R.layout.layou_routing, this);
+             LayoutInflater.from(context).inflate(R.layout.layout_routing, this);
              mSources = findViewById(R.id.moduleSourcesSpinner);
              mDestinations = findViewById(R.id.moduleDestinationsSpinner);
              mDepthSeekBar = findViewById(R.id.depthSeekBar);
+
+             /*depth init*/
+             final int depthNormalize = 100;
              mDepthSeekBar.setIndicatorTextDecimalFormat("0.0");
+             mDepthSeekBar.setProgress(100.0f);
+             PdBase.sendFloat("channel_DEPTH_" + modMatrixChannel, 1.0f);
 
              /*spinner dropdown look*/
              ArrayAdapter<CharSequence> sourcesAdapter;
              ArrayAdapter<CharSequence> destinationsAdapter;
 
              if (!isMidi) {
-                 modMatrixType = "toggle_mod_matrix_path";
+                 modMatrixTypeSource = "toggle_mod_matrix_path_IN_";
+                 modMatrixTypeDestination = "toggle_mod_matrix_path_OUT_";
                  sourcesAdapter = ArrayAdapter.createFromResource(context, R.array.sources, android.R.layout.simple_spinner_item);
                  destinationsAdapter = ArrayAdapter.createFromResource(context, R.array.destinations, android.R.layout.simple_spinner_item);
              } else {
-                 modMatrixType = "toggle_midi_mod_matrix_path";
+                 mDepthSeekBar.setVisibility(INVISIBLE);
+                 modMatrixTypeSource = "toggle_midi_mod_matrix_path_";
+                 modMatrixTypeDestination = "toggle_midi_mod_matrix_path_OUT_";
                  sourcesAdapter = ArrayAdapter.createFromResource(context, R.array.midiSources, android.R.layout.simple_spinner_item);
                  destinationsAdapter = ArrayAdapter.createFromResource(context, R.array.midiDestinations, android.R.layout.simple_spinner_item);
              }
@@ -112,8 +120,7 @@ public class Matrix extends FrameLayout {
              mSources.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                  @Override
                  public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                     PdBase.sendFloat(modMatrixType + "_IN_" + modMatrixChannel, position);
-                     Log.d("SOURCE", "onItemSelected: " + position);
+                     PdBase.sendFloat(modMatrixTypeSource + modMatrixChannel, position);
                  }
 
                  @Override
@@ -125,8 +132,7 @@ public class Matrix extends FrameLayout {
              mDestinations.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                  @Override
                  public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                     PdBase.sendFloat(modMatrixType + "_OUT_" + modMatrixChannel, position);
-                     Log.d("DESTINATIONS", "onItemSelected: " + position);
+                     PdBase.sendFloat(modMatrixTypeDestination + modMatrixChannel, position);
                  }
 
                  @Override
@@ -138,7 +144,7 @@ public class Matrix extends FrameLayout {
              mDepthSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
                  @Override
                  public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                     //PdBase.sendFloat("" + moduleID, leftValue);
+                     PdBase.sendFloat("channel_DEPTH_" + modMatrixChannel, leftValue/depthNormalize);
                  }
 
                  @Override

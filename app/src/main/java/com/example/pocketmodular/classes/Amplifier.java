@@ -30,6 +30,7 @@ public class Amplifier extends FrameLayout {
         /*vars*/
         mApplication = ((MyApplication)context.getApplicationContext());
         isCollapsed = false;
+        final int volNormalize = 100;
 
         /*ui*/
         LayoutInflater.from(context).inflate(R.layout.layout_amplifier, this);
@@ -58,7 +59,7 @@ public class Amplifier extends FrameLayout {
         mVolumeSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("ampVolume_" + moduleID, leftValue/100);
+                PdBase.sendFloat("amp_GAIN_" + moduleID, leftValue/volNormalize);
             }
 
             @Override

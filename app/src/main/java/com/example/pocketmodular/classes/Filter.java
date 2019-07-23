@@ -32,6 +32,8 @@ public class Filter extends FrameLayout {
         /*vars*/
         mApplication = ((MyApplication)context.getApplicationContext());
         isCollapsed = false;
+        final int freqNormalize = 2000;
+        final int resNormalize = 25;
 
         /*ui*/
         LayoutInflater.from(context).inflate(R.layout.layout_filter, this);
@@ -91,7 +93,7 @@ public class Filter extends FrameLayout {
         mFrequencySeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("fltFrequency_" + moduleID, leftValue/40);
+                PdBase.sendFloat("flt_CUT_" + moduleID, leftValue/freqNormalize);
             }
 
             @Override
@@ -103,7 +105,7 @@ public class Filter extends FrameLayout {
         mResonanceSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("fltResonance_" + moduleID, leftValue*25);
+                PdBase.sendFloat("flt_RES_" + moduleID, leftValue*resNormalize);
             }
 
             @Override

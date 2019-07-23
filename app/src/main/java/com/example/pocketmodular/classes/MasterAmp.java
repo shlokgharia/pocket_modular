@@ -30,6 +30,7 @@ public class MasterAmp extends FrameLayout {
         /*vars*/
         mApplication = ((MyApplication)context.getApplicationContext());
         isCollapsed = false;
+        final int masterNormalize = 100;
 
         /*ui*/
         LayoutInflater.from(context).inflate(R.layout.layout_masteramp, this);
@@ -42,7 +43,10 @@ public class MasterAmp extends FrameLayout {
         mMasterAmpNameLayout.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleNameWidth(), mMasterAmpNameLayout.getLayoutParams().height));
         mMasterAmpControls.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleControlsWidth()/2, mMasterAmpControls.getLayoutParams().height));
 
+        /*master volume init*/
         mMasterSeekBar.setIndicatorTextDecimalFormat("0.0");
+        mMasterSeekBar.setProgress(100.0f);
+        PdBase.sendFloat("master_amp_GAIN", 1.0f);
 
         /*OnClick*/
         mMasterAmpNameLayout.setOnClickListener(new OnClickListener() {
@@ -58,7 +62,7 @@ public class MasterAmp extends FrameLayout {
         mMasterSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("master_amp_GAIN", leftValue/100);
+                PdBase.sendFloat("master_amp_GAIN", leftValue/masterNormalize);
 
             }
 
