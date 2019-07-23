@@ -1,3 +1,136 @@
 <resources>
     <string name="app_name">PocketModular</string>
+
+    <string-array name="sources">
+        <item>Empty</item>
+
+        <item>osc1 OUT</item>
+        <item>osc2 OUT</item>
+        <item>osc3 OUT</item>
+        <item>osc4 OUT</item>
+
+        <item>flt1 OUT</item>
+        <item>flt2 OUT</item>
+        <item>flt3 OUT</item>
+        <item>flt4 OUT</item>
+
+        <item>env1 OUT</item>
+        <item>env2 OUT</item>
+        <item>env3 OUT</item>
+        <item>env4 OUT</item>
+        <item>env5 OUT</item>
+        <item>env6 OUT</item>
+
+        <item>amp1 OUT</item>
+        <item>amp2 OUT</item>
+        <item>amp3 OUT</item>
+        <item>amp4 OUT</item>
+        <item>amp5 OUT</item>
+        <item>amp6 OUT</item>
+
+    </string-array>
+
+    <string-array name="destinations">
+        <item>Empty</item>
+
+        <item>flt1 IN</item>
+        <item>flt2 IN</item>
+        <item>flt3 IN</item>
+        <item>flt4 IN</item>
+
+        <item>flt1 CUT</item>
+        <item>flt2 CUT</item>
+        <item>flt3 CUT</item>
+        <item>flt4 CUT</item>
+
+        <item>flt1 RES</item>
+        <item>flt2 RES</item>
+        <item>flt3 RES</item>
+        <item>flt4 RES</item>
+
+        <item>env1 TRIG</item>
+        <item>env2 TRIG</item>
+        <item>env3 TRIG</item>
+        <item>env4 TRIG</item>
+        <item>env5 TRIG</item>
+        <item>env6 TRIG</item>
+
+        <item>amp1 IN</item>
+        <item>amp2 IN</item>
+        <item>amp3 IN</item>
+        <item>amp4 IN</item>
+        <item>amp5 IN</item>
+        <item>amp6 IN</item>
+
+        <item>amp1 GAIN</item>
+        <item>amp2 GAIN</item>
+        <item>amp3 GAIN</item>
+        <item>amp4 GAIN</item>
+        <item>amp5 GAIN</item>
+        <item>amp6 GAIN</item>
+
+        <item>master</item>
+    </string-array>
+
+    <string-array name="midiSources">
+        <item>--midi--</item>
+
+        <item>midi1 PITCH</item>
+        <item>midi2 PITCH</item>
+        <item>midi3 PITCH</item>
+        <item>midi4 PITCH</item>
+
+        <item>midi1 GATE</item>
+        <item>midi2 GATE</item>
+        <item>midi3 GATE</item>
+        <item>midi4 GATE</item>
+    </string-array>
+
+    <string-array name="midiDestinations">
+        <item>--midi--</item>
+
+        <item>osc1 PITCH</item>
+        <item>osc2 PITCH</item>
+        <item>osc3 PITCH</item>
+        <item>osc4 PITCH</item>
+
+        <item>env1 TRIG</item>
+        <item>env2 TRIG</item>
+        <item>env3 TRIG</item>
+        <item>env4 TRIG</item>
+        <item>env5 TRIG</item>
+        <item>env6 TRIG</item>
+    </string-array>
+
+    <string-array name="waveshapeArray">
+        <item>None</item>
+        <item>Sine</item>
+        <item>Triangle</item>
+        <item>Square</item>
+    </string-array>
+
+    <string-array name="filterTypeArray">
+        <item>None</item>
+        <item>Low</item>
+        <item>High</item>
+        <item>Band</item>
+    </string-array>
+
+    <string-array name="voicesArray">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="oneHundred">
+        <item>0</item>
+        <item>25</item>
+        <item>50</item>
+        <item>75</item>
+        <item>100</item>
+    </string-array>
+
+
+
 </resources>

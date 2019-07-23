@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/matrixModule_container"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorDarkBG"/>
+        <View
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorModuleBG"/>
+
+        <FrameLayout
+            android:id="@+id/matrixNameFrameLayout"
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorGray">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="-2dp"
+                android:inputType="text"
+                android:rotation="-90"
+                android:scaleX="4"
+                android:scaleY="4"
+                android:text="matrix"
+                android:textColor="#FFF"
+                android:textSize="6dp" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/matrixControlsLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorModuleBG"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:weightSum="4">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/matrixRoutingLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="16sp"
+                        android:layout_gravity="center"
+                        android:weightSum="2">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="SRC"
+                            android:textSize="18dp"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="DEST"
+                            android:textSize="18dp"
+                            android:layout_marginStart="76dp"
+                            android:layout_weight="1"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/colorGray">
+                    </View>
+
+
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

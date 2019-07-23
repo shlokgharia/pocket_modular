@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/oscillatorModule_container"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorDarkBG"/>
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorGreen"/>
+
+        <FrameLayout
+            android:id="@+id/filterNameFrameLayout"
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorGray">
+
+            <TextView
+                android:id="@+id/filterNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="-2dp"
+                android:inputType="text"
+                android:rotation="-90"
+                android:scaleX="4"
+                android:scaleY="4"
+                android:text="FLT"
+                android:textColor="#FFF"
+                android:textSize="6dp" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/filterControlsLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorModuleBG"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:weightSum="3">
+
+            <RelativeLayout
+                android:layout_width="64dp"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <com.jaygoo.widget.VerticalRangeSeekBar
+                    android:id="@+id/filterTypeSeekBar"
+                    android:layout_width="28dp"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/filterTypeSeekText"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    app:rsb_gravity="center"
+                    app:rsb_indicator_show_mode="alwaysHide"
+                    app:rsb_step_color="@color/colorGreenDark"
+                    app:rsb_step_height="10dp"
+                    app:rsb_step_width="2dp"
+                    app:rsb_max="3"
+                    app:rsb_min="0"
+                    app:rsb_steps="3"
+                    app:rsb_step_auto_bonding="true"
+                    app:rsb_mode="single"
+                    app:rsb_progress_color="@color/colorGreenDark"
+                    app:rsb_tick_mark_layout_gravity="bottom"
+                    app:rsb_tick_mark_mode="other"
+                    app:rsb_tick_mark_text_array="@array/filterTypeArray"
+                    app:rsb_tick_mark_text_margin="20dp"
+                    app:rsb_tick_mark_text_color="@color/colorGreenDark" />
+
+                <TextView
+                    android:id="@+id/filterTypeSeekText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:text="FILTER"
+                    android:layout_centerHorizontal="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="64dp"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <com.jaygoo.widget.VerticalRangeSeekBar
+                    android:id="@+id/frequencySeekBar"
+                    android:layout_width="28dp"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/frequencySeekText"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    app:rsb_gravity="center"
+                    app:rsb_indicator_background_color="@color/colorGreenDark"
+                    app:rsb_indicator_padding_bottom="5dp"
+                    app:rsb_indicator_padding_left="10dp"
+                    app:rsb_indicator_padding_right="10dp"
+                    app:rsb_indicator_padding_top="5dp"
+                    app:rsb_indicator_show_mode="showWhenTouch"
+                    app:rsb_max="100"
+                    app:rsb_min="0"
+                    app:rsb_mode="single"
+                    app:rsb_progress_color="@color/colorGreenDark"
+                    app:rsb_tick_mark_layout_gravity="bottom"
+                    app:rsb_tick_mark_mode="number"
+                    app:rsb_tick_mark_text_array="@array/oneHundred"
+                    app:rsb_tick_mark_text_color="@color/colorGreenDark" />
+
+                <TextView
+                    android:id="@+id/frequencySeekText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:text="FREQ"
+                    android:inputType="text"
+                    android:layout_centerHorizontal="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="64dp"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <com.jaygoo.widget.VerticalRangeSeekBar
+                    android:id="@+id/resonanceSeekBar"
+                    android:layout_width="28dp"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/resonanceSeekText"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    app:rsb_gravity="center"
+                    app:rsb_indicator_background_color="@color/colorGreenDark"
+                    app:rsb_indicator_padding_bottom="5dp"
+                    app:rsb_indicator_padding_left="10dp"
+                    app:rsb_indicator_padding_right="10dp"
+                    app:rsb_indicator_padding_top="5dp"
+                    app:rsb_indicator_show_mode="showWhenTouch"
+                    app:rsb_max="100"
+                    app:rsb_min="0"
+                    app:rsb_mode="single"
+                    app:rsb_progress_color="@color/colorGreenDark"
+                    app:rsb_tick_mark_layout_gravity="bottom"
+                    app:rsb_tick_mark_mode="number"
+                    app:rsb_tick_mark_text_array="@array/oneHundred"
+                    app:rsb_tick_mark_text_color="@color/colorGreenDark" />
+
+                <TextView
+                    android:id="@+id/resonanceSeekText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:text="RES"
+                    android:layout_centerHorizontal="true"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

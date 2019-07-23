@@ -43,12 +43,10 @@ public class Note implements View.OnTouchListener {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 noteVector.setColorFilter(Color.argb(155, 255, 0, 0));
-                PdBase.sendFloat("onOff", 1.0f);
                 PdBase.sendNoteOn(0, position + (octave * 12), velocity);
                 return true;
             case MotionEvent.ACTION_UP:
                 noteVector.clearColorFilter();
-                PdBase.sendFloat("onOff", 0f);
                 return true;
         }
         return false;

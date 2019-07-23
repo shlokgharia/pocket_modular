@@ -2,7 +2,7 @@
 <resources>
     <dimen name="wNoteHeight">96dp</dimen>
     <dimen name="wNoteWidth">46dp</dimen>
-    <dimen name="wNoteMargin">-17dp</dimen>
+    <dimen name="wNoteMargin">-16dp</dimen>
 
     <dimen name="bNoteHeight">50dp</dimen>
     <dimen name="bNoteWidth">32dp</dimen>

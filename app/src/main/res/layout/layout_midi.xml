@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorDarkBG"/>
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorPurple"/>
+
+        <FrameLayout
+            android:id="@+id/midiNameFrameLayout"
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorGray">
+
+            <TextView
+                android:id="@+id/midiNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="-2dp"
+                android:inputType="text"
+                android:rotation="-90"
+                android:scaleX="4"
+                android:scaleY="4"
+                android:text="midi"
+                android:textColor="#FFF"
+                android:textSize="6dp" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/midiControlsLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorModuleBG"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:weightSum="1">
+
+            <RelativeLayout
+                android:layout_width="64dp"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:id="@+id/midiBtns"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/voicesDownBtn"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:backgroundTint="@color/colorGray"
+                        android:text="-"
+                        android:textColor="#FFF"
+                        android:textSize="24dp" />
+
+                    <TextView
+                        android:id="@+id/voicesText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textColor="@color/colorGray"
+                        android:textSize="24dp" />
+
+                    <Button
+                        android:id="@+id/voicesUpBtn"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:backgroundTint="@color/colorGray"
+                        android:text="+"
+                        android:textColor="#FFF"
+                        android:textSize="24dp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/midiBtns"
+                    android:layout_marginTop="16dp"
+                    android:text="VOICES"
+                    android:layout_centerHorizontal="true"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
