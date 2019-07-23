@@ -14,7 +14,7 @@
 1;
 #X obj 245 351 *~;
 #X obj 418 252 -~ 1;
-#X obj 463 251 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 463 251 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 419 287 *~;
 #X obj 418 227 *~ 2;
@@ -2397,9 +2397,9 @@
 #X obj 204 183 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 163 182 vsl 15 128 0 500 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 9100 1;
+-1 -1 0 1;
 #X obj 246 184 vsl 15 128 0 1000 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 7200 1;
+-1 -1 0 1;
 #X floatatom 119 318 5 0 0 0 - - -;
 #X floatatom 204 319 5 0 0 0 - - -;
 #X floatatom 163 318 5 0 0 0 - - -;
@@ -2463,7 +2463,7 @@
 #X connect 33 0 12 0;
 #X connect 33 0 14 0;
 #X restore 6 1396 pd env1;
-#N canvas 574 192 866 613 flt1 1;
+#N canvas 574 192 866 613 flt1 0;
 #X obj 159 452 *~;
 #X obj 174 422 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -2497,7 +2497,7 @@ filter is on;
 #X obj 578 203 realtime;
 #X floatatom 522 291 5 0 0 0 - - -;
 #X obj 529 224 metro;
-#X obj 523 184 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 523 184 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 323 147 *~ 22000;
 #X obj 478 99 catch~ flt_RES_1;
@@ -2509,7 +2509,7 @@ filter is on;
 #X obj 46 208 vcf~ 1;
 #X obj 117 300 dac~;
 #X obj 624 150 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 1 256;
+-262144 -1 -1 0 256;
 #X connect 0 0 14 0;
 #X connect 1 0 0 1;
 #X connect 2 0 14 0;
@@ -2544,7 +2544,6 @@ filter is on;
 #X connect 32 0 37 2;
 #X connect 33 0 32 0;
 #X connect 34 0 33 1;
-#X connect 35 0 18 0;
 #X connect 36 0 35 0;
 #X connect 37 0 0 0;
 #X connect 37 1 2 0;
@@ -2552,7 +2551,7 @@ filter is on;
 #N canvas 0 23 450 300 master_amp 0;
 #X obj 91 218 *~;
 #X obj 268 107 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 11600 1;
+-1 -1 0 1;
 #X text 94 17 Input;
 #X text 190 16 Volume in: 0 - 1;
 #X obj 113 261 dac~;
@@ -26706,40 +26705,40 @@ filter is on;
 need to remove env TRIGs from the regular mod matrix;
 #X obj 542 320 *~;
 #X obj 1149 310 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj 1146 287 r channel_DEPTH_5;
 #X obj 1162 254 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 7400 1;
+-1 -1 0 1;
 #X obj 1159 233 r channel_DEPTH_4;
 #X obj 1167 207 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 10400 1;
+-1 -1 0 1;
 #X obj 1164 186 r channel_DEPTH_3;
 #X obj 1172 161 hsl 128 15 0 0.2 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj 1169 140 r channel_DEPTH_2;
 #X obj 1192 78 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 7500 1;
+-1 -1 0 1;
 #X obj 1189 54 r channel_DEPTH_1;
 #X obj 535 258 *~;
 #X obj 542 203 *~;
 #X obj 554 157 *~;
 #X obj 560 101 *~;
 #X obj 1117 373 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 6700 1;
+-1 -1 0 1;
 #X obj 1114 352 r channel_DEPTH_6;
 #X obj 535 375 *~;
 #X obj 1115 427 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 9600 1;
+-1 -1 0 1;
 #X obj 1112 406 r channel_DEPTH_7;
 #X obj 527 430 *~;
 #X obj 1124 487 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X obj 1121 466 r channel_DEPTH_8;
 #X obj 520 485 *~;
 #X obj 1158 560 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 7000 1;
+-1 -1 0 1;
 #X obj 1167 620 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 11800 1;
+-1 -1 0 1;
 #X obj 1155 539 r channel_DEPTH_9;
 #X obj 1164 599 r channel_DEPTH_10;
 #X obj 522 531 *~;
@@ -37403,9 +37402,9 @@ need to remove env TRIGs from the regular mod matrix;
 #X obj 204 183 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 163 182 vsl 15 128 0 500 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 10900 1;
+-1 -1 0 1;
 #X obj 246 184 vsl 15 128 0 1000 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 8600 1;
+-1 -1 0 1;
 #X floatatom 119 318 5 0 0 0 - - -;
 #X floatatom 204 319 5 0 0 0 - - -;
 #X floatatom 163 318 5 0 0 0 - - -;
@@ -37479,9 +37478,9 @@ need to remove env TRIGs from the regular mod matrix;
 #X obj 204 183 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 163 182 vsl 15 128 0 500 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 7900 1;
+-1 -1 0 1;
 #X obj 246 184 vsl 15 128 0 1000 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 7200 1;
+-1 -1 0 1;
 #X floatatom 119 318 5 0 0 0 - - -;
 #X floatatom 204 319 5 0 0 0 - - -;
 #X floatatom 163 318 5 0 0 0 - - -;
@@ -37555,9 +37554,9 @@ need to remove env TRIGs from the regular mod matrix;
 #X obj 204 183 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X obj 163 182 vsl 15 128 0 500 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 7800 1;
+-1 -1 0 1;
 #X obj 246 184 vsl 15 128 0 1000 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 8100 1;
+-1 -1 0 1;
 #X floatatom 119 318 5 0 0 0 - - -;
 #X floatatom 204 319 5 0 0 0 - - -;
 #X floatatom 163 318 5 0 0 0 - - -;
@@ -37898,7 +37897,7 @@ filter is on;
 #X obj 578 203 realtime;
 #X floatatom 522 291 5 0 0 0 - - -;
 #X obj 529 224 metro;
-#X obj 523 184 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 523 184 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 323 147 *~ 22000;
 #X obj 478 99 catch~ flt_RES_1;
@@ -37979,7 +37978,7 @@ filter is on;
 #X obj 578 203 realtime;
 #X floatatom 522 291 5 0 0 0 - - -;
 #X obj 529 224 metro;
-#X obj 523 184 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 523 184 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 323 147 *~ 22000;
 #X obj 478 99 catch~ flt_RES_1;
@@ -38060,7 +38059,7 @@ filter is on;
 #X obj 578 203 realtime;
 #X floatatom 522 291 5 0 0 0 - - -;
 #X obj 529 224 metro;
-#X obj 523 184 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 523 184 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 323 147 *~ 22000;
 #X obj 478 99 catch~ flt_RES_1;
@@ -38118,7 +38117,7 @@ filter is on;
 #X obj 244 316 -~ 1;
 #X obj 262 208 *~ -1;
 #X obj 263 233 +~ 1;
-#X obj 284 314 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 284 314 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 245 351 *~;
 #X obj 418 252 -~ 1;
@@ -38195,7 +38194,7 @@ filter is on;
 1;
 #X obj 245 351 *~;
 #X obj 418 252 -~ 1;
-#X obj 463 251 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 463 251 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 419 287 *~;
 #X obj 418 227 *~ 2;
@@ -38268,7 +38267,7 @@ filter is on;
 1;
 #X obj 245 351 *~;
 #X obj 418 252 -~ 1;
-#X obj 463 251 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 463 251 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 419 287 *~;
 #X obj 418 227 *~ 2;
@@ -38350,7 +38349,7 @@ filter is on;
 #X obj 275 380 pack f f f;
 #X obj 267 433 route 1 2;
 #X obj 686 261 spigot;
-#X obj 676 224 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 676 224 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 627 258 spigot;
 #X obj 624 228 notein;
@@ -38512,9 +38511,9 @@ filter is on;
 #X connect 67 0 53 0;
 #X restore 174 1453 pd midipatch;
 #X obj 1135 667 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12600 1;
+-1 -1 0 1;
 #X obj 1167 731 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 8500 1;
+-1 -1 0 1;
 #X obj 1176 791 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
 #X obj 1148 641 r channel_DEPTH_11;
