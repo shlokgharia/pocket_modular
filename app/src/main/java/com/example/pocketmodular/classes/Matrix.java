@@ -122,7 +122,6 @@ public class Matrix extends FrameLayout {
                  @Override
                  public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                      PdBase.sendFloat(modMatrixTypeSource + modMatrixChannel, position);
-                     Log.d("MATRIX", modMatrixTypeSource + modMatrixChannel);
                  }
 
                  @Override
@@ -135,7 +134,6 @@ public class Matrix extends FrameLayout {
                  @Override
                  public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                      PdBase.sendFloat(modMatrixTypeDestination + modMatrixChannel, position);
-                     Log.d("MATRIX", modMatrixTypeDestination + modMatrixChannel);
                  }
 
                  @Override

@@ -1,6 +1,7 @@
 package com.example.pocketmodular.classes;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -33,9 +34,10 @@ public class Envelope extends FrameLayout {
         /*vars*/
         mApplication = ((MyApplication)context.getApplicationContext());
         isCollapsed = false;
-        final int attackNormalize = 5;
-        final int decayNormalize = 3;
+        final int attackNormalize = 3;
+        final int decayNormalize = 5;
         final int sustainNormalize = 100;
+        final int releaseNormalize = 10;
 
         /*ui*/
         LayoutInflater.from(context).inflate(R.layout.layout_envelope, this);
@@ -70,7 +72,7 @@ public class Envelope extends FrameLayout {
         mAttackSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("envAttack_" + moduleID, leftValue/attackNormalize);
+                PdBase.sendFloat("envAttack_" + moduleID, leftValue*attackNormalize);
             }
 
             @Override
@@ -82,7 +84,7 @@ public class Envelope extends FrameLayout {
         mDecaySeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("envDecay_" + moduleID, leftValue/decayNormalize);
+                PdBase.sendFloat("envDecay_" + moduleID, leftValue*decayNormalize);
             }
 
             @Override
@@ -94,7 +96,8 @@ public class Envelope extends FrameLayout {
         mSustainSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("envSustain_" + moduleID, leftValue*sustainNormalize);
+                PdBase.sendFloat("envSustain_" + moduleID, leftValue);
+                Log.d("ENVELOPE", "onRangeChanged: Sustain" + leftValue/sustainNormalize);
             }
 
             @Override
@@ -107,6 +110,7 @@ public class Envelope extends FrameLayout {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
                 PdBase.sendFloat("envRelease_" + moduleID, leftValue);
+                Log.d("ENVELOPE", "onRangeChanged: Release" + leftValue*releaseNormalize);
             }
 
             @Override

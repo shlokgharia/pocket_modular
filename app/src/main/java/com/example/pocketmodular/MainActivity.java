@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         IoUtils.extractZipResource(getResources().openRawResource(pdZip), dir, true);
         PdBase.openPatch(pdPatch.getAbsolutePath());
 
-        PdAudio.initAudio(16000, 0, 2, 1, true);
+        PdAudio.initAudio(8000, 0, 2, 1, true);
     }
 
     /*----Helper Functions----*/

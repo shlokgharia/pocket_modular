@@ -4,29 +4,29 @@
     <string-array name="sources">
         <item>Empty</item>
 
-        <item>osc1</item>
-        <item>osc2</item>
-        <item>osc3</item>
-        <item>osc4</item>
+        <item>osc1 OUT</item>
+        <item>osc2 OUT</item>
+        <item>osc3 OUT</item>
+        <item>osc4 OUT</item>
 
-        <item>flt1</item>
-        <item>flt2</item>
-        <item>flt3</item>
-        <item>flt4</item>
+        <item>flt1 OUT</item>
+        <item>flt2 OUT</item>
+        <item>flt3 OUT</item>
+        <item>flt4 OUT</item>
 
-        <item>env1</item>
-        <item>env2</item>
-        <item>env3</item>
-        <item>env4</item>
-        <item>env5</item>
-        <item>env6</item>
+        <item>env1 OUT</item>
+        <item>env2 OUT</item>
+        <item>env3 OUT</item>
+        <item>env4 OUT</item>
+        <item>env5 OUT</item>
+        <item>env6 OUT</item>
 
-        <item>amp1</item>
-        <item>amp2</item>
-        <item>amp3</item>
-        <item>amp4</item>
-        <item>amp5</item>
-        <item>amp6</item>
+        <item>amp1 OUT</item>
+        <item>amp2 OUT</item>
+        <item>amp3 OUT</item>
+        <item>amp4 OUT</item>
+        <item>amp5 OUT</item>
+        <item>amp6 OUT</item>
 
     </string-array>
 

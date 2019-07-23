@@ -65,7 +65,7 @@ public class Midi extends FrameLayout {
             @Override
             public void onClick(View v) {
                 if (mVoices < 4) {
-                    PdBase.sendFloat("clear_setting", 1.0f);
+                    PdBase.sendBang("clear_setting");
                     PdBase.sendFloat("midi_setting",  ++mVoices);
                     mVoicesText.setText(Integer.parseInt(mVoicesText.getText().toString())+1 + "");
                 }
@@ -75,7 +75,7 @@ public class Midi extends FrameLayout {
             @Override
             public void onClick(View v) {
                 if (mVoices > 1) {
-                    PdBase.sendFloat("clear_setting", 1.0f);
+                    PdBase.sendBang("clear_setting");
                     PdBase.sendFloat("midi_setting", --mVoices);
                     mVoicesText.setText(Integer.parseInt(mVoicesText.getText().toString())-1 + "");
                 }
