@@ -3,5 +3,7 @@ sent to "pocket_modular.pd" to ensure it was being properly received.
 
 I tested UI components by visually observing my interactions in the app and seeing if anything differed from what I expected.
 
-I logged out values from various sliders as well as the position of items in the dropdown menu from the matrix module to 
-verify that it coincided with receivers in "pocket_modular.pd" and didn't exceed any of the corresponding values.
+I logged out values from various sliders to check if they exceeded any values from corresponding sliders in "pocket_modular.pd". 
+
+I also logged out the position of items in the dropdown menu from the matrix module to verify that it correctly coincided with
+the receivers in "pocket_modular.pd".
