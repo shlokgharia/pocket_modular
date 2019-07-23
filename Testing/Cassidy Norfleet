@@ -1,0 +1,7 @@
+Throughout the development processes I tested LibPd and Pure Data integration with android studio by logging out messages 
+sent to "pocket_modular.pd" to ensure it was being properly received.
+
+I tested UI components by visually observing my interactions in the app and seeing if anything differed from what I expected.
+
+I logged out values from various sliders as well as the position of items in the dropdown menu from the matrix module to 
+verify that it coincided with receivers in "pocket_modular.pd" and didn't exceed any of the corresponding values.
