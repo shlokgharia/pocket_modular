@@ -1,0 +1,13 @@
+For my portion of the project I performed several informal test to get the midi pure data patch to work.
+
+First, as a proof of concept. I created a layout that would receive numbers in place of midi information to get the routing and
+settings managment to work. I did this by creating print statements in pure data to check the information was being sent
+
+Then I worked to rewrite the number patch to take in midi data, which is number pairs containing note info, velocity data, and channel data.
+To test this I created number pairs that acted as the midi information I would revieve from a midi controller and tested my functions that
+kept track of the note number (which note was played first and which was second and so forth) as well as seperating the note and velocity
+information. I again used print statements to make sure the data I wanted was routed to the correct places
+
+Finally I replaced all my number pairs with midi notein nodes and used a midi controller to send data through the file. I used print 
+statements to check if the informartion was being routed correctly as well as listening to the sounds that were created by the matrix.
+If the notes made a sound when pressed then It was working as intended.
