@@ -1,0 +1,16 @@
+During development I worked on and tested the individual PureData(PD) patches(excluding the mod matrix).
+
+For the Oscilator I ran tests to see if the patch could produce the correct wave form by turning on the 
+correct toggle in PD and adding a [key] object to act as a test double for midi input. I also added the 
+[dac~] object to act as a test spy so that the output could be expressed as an audio signal. These were 
+done in the code and were later removed.
+
+For the Envelope I ran a similar test to the Oscilator, however the setup for test stub used [keyup] and 
+didn't accurately approximate the midi input. This meant that the error which failed to trigger the Release 
+wasn't caught until it couldn't be fixed.
+
+For the Filter I added a [noise~] object as a test stub and directly manipulated the toggles and float values 
+which would be manipulated by receive messages. This did not require me having to rewrite code for the 
+receive messages.
+
+For the Amplifier I used the same test as the Oscilator.
