@@ -43,6 +43,7 @@ public class Oscillator extends FrameLayout {
         mOcsControls.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleControlsWidth()/2, mOcsControls.getLayoutParams().height));
 
         /*OnClick*/
+        // adjusts width upon clicking naming bar
         mOscNameLayout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

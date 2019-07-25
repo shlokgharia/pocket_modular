@@ -32,8 +32,8 @@ public class Filter extends FrameLayout {
         /*vars*/
         mApplication = ((MyApplication)context.getApplicationContext());
         isCollapsed = false;
-        final int freqNormalize = 2000;
-        final int resNormalize = 25;
+        final int NORMALIZE_FREQUENCY = 2000;
+        final int NORMALIZE_RESONANCE = 25;
 
         /*ui*/
         LayoutInflater.from(context).inflate(R.layout.layout_filter, this);
@@ -52,6 +52,7 @@ public class Filter extends FrameLayout {
         mResonanceSeekBar.setIndicatorTextDecimalFormat("0.0");
 
         /*OnClick*/
+        // adjusts width upon clicking naming bar
         mFilterNameLayout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,7 +94,7 @@ public class Filter extends FrameLayout {
         mFrequencySeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("flt_CUT_" + moduleID, leftValue/freqNormalize);
+                PdBase.sendFloat("flt_CUT_" + moduleID, leftValue/NORMALIZE_FREQUENCY);
             }
 
             @Override
@@ -105,7 +106,7 @@ public class Filter extends FrameLayout {
         mResonanceSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("flt_RES_" + moduleID, leftValue*resNormalize);
+                PdBase.sendFloat("flt_RES_" + moduleID, leftValue*NORMALIZE_RESONANCE);
             }
 
             @Override

@@ -30,6 +30,8 @@ public class Midi extends FrameLayout {
         mApplication = ((MyApplication)context.getApplicationContext());
         isCollapsed = false;
         mVoices = 1;
+        final int MAX_VOICES = 4;
+        final int MIN_VOICES = 1;
 
         /*ui*/
         LayoutInflater.from(context).inflate(R.layout.layout_midi, this);
@@ -45,6 +47,7 @@ public class Midi extends FrameLayout {
         PdBase.sendBang("midi_setting_1");
 
         /*OnClick*/
+        // adjusts width upon clicking naming bar
         mMidiNameLayout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +61,7 @@ public class Midi extends FrameLayout {
         mVoicesUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mVoices < 4) {
+                if (mVoices < MAX_VOICES) {
                     mVoices++;
                     setVoices();
                 }
@@ -67,7 +70,7 @@ public class Midi extends FrameLayout {
         mVoicesDownBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mVoices > 1) {
+                if (mVoices > MIN_VOICES) {
                     mVoices--;
                     setVoices();
                 }

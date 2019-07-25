@@ -34,10 +34,10 @@ public class Envelope extends FrameLayout {
         /*vars*/
         mApplication = ((MyApplication)context.getApplicationContext());
         isCollapsed = false;
-        final int attackNormalize = 3;
-        final int decayNormalize = 5;
-        final int sustainNormalize = 100;
-        final int releaseNormalize = 10;
+        final int NORMALIZE_ATTACK = 3;
+        final int NORMALIZE_DECAY = 5;
+        final int NORMALIZE_SUSTAIN = 100;
+        final int NORMALIZE_RELEASE = 10;
 
         /*ui*/
         LayoutInflater.from(context).inflate(R.layout.layout_envelope, this);
@@ -59,6 +59,7 @@ public class Envelope extends FrameLayout {
         mReleaseSeekBar.setIndicatorTextDecimalFormat("0.0");
 
         /*OnClick*/
+        // adjusts width upon clicking naming bar
         mEnvelopeNameLayout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +73,7 @@ public class Envelope extends FrameLayout {
         mAttackSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("envAttack_" + moduleID, leftValue*attackNormalize);
+                PdBase.sendFloat("envAttack_" + moduleID, leftValue*NORMALIZE_ATTACK);
             }
 
             @Override
@@ -84,7 +85,7 @@ public class Envelope extends FrameLayout {
         mDecaySeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("envDecay_" + moduleID, leftValue*decayNormalize);
+                PdBase.sendFloat("envDecay_" + moduleID, leftValue*NORMALIZE_DECAY);
             }
 
             @Override
@@ -96,8 +97,7 @@ public class Envelope extends FrameLayout {
         mSustainSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("envSustain_" + moduleID, leftValue);
-                Log.d("ENVELOPE", "onRangeChanged: Sustain" + leftValue/sustainNormalize);
+                PdBase.sendFloat("envSustain_" + moduleID, leftValue/NORMALIZE_SUSTAIN);
             }
 
             @Override
@@ -109,8 +109,7 @@ public class Envelope extends FrameLayout {
         mReleaseSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("envRelease_" + moduleID, leftValue);
-                Log.d("ENVELOPE", "onRangeChanged: Release" + leftValue*releaseNormalize);
+                PdBase.sendFloat("envRelease_" + moduleID, leftValue*NORMALIZE_RELEASE);
             }
 
             @Override

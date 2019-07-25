@@ -20,7 +20,6 @@ import com.example.pocketmodular.classes.Midi;
 import com.example.pocketmodular.classes.Note;
 import com.example.pocketmodular.classes.Oscillator;
 
-import org.puredata.android.io.AudioParameters;
 import org.puredata.android.io.PdAudio;
 import org.puredata.core.PdBase;
 import org.puredata.core.utils.IoUtils;
@@ -33,7 +32,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     /*vars*/
     private List <FrameLayout> mPdModules;
-    private int mOctave;                    // current octave
+    private int mCurrentOctave;                    // current octave
     private List<Note> mNotes;              // implements an onTouchListener for each note in the keyboard (see Notes.java)
 
     /*ui*/
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         /*vars*/
         mPdModules = new ArrayList<>();
         mNotes = new ArrayList<>();
-        mOctave = 4;
+        mCurrentOctave = 4;
 
         // Get & Set screen width
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -90,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         final String[] tempNoteList = {"C", "Cs", "D", "Ds", "E", "F", "Fs", "G", "Gs", "A", "As", "B"};
         for (int octavePos = 0; octavePos < mKeyboardDisplay.getChildCount(); octavePos++) {
             for (int notPos = 0; notPos < tempNoteList.length; notPos++) {
-                Note newNote = new Note(notPos,octavePos + mOctave);
+                Note newNote = new Note(notPos,octavePos + mCurrentOctave);
                 int id = getResources().getIdentifier(tempNoteList[notPos], "id", this.getPackageName());
                 mKeyboardDisplay.getChildAt(octavePos).findViewById(id).setOnTouchListener(newNote);
                 mNotes.add(newNote);
@@ -172,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateOctave(int offSet) {
-        mOctave += offSet;
+        mCurrentOctave += offSet;
         for (Note note : mNotes) {
             note.setOctave(note.getOctave() + offSet);
         }

@@ -30,7 +30,7 @@ public class Amplifier extends FrameLayout {
         /*vars*/
         mApplication = ((MyApplication)context.getApplicationContext());
         isCollapsed = false;
-        final int volNormalize = 100;
+        final int NORMALIZE_VOLUME = 100;
 
         /*ui*/
         LayoutInflater.from(context).inflate(R.layout.layout_amplifier, this);
@@ -46,6 +46,7 @@ public class Amplifier extends FrameLayout {
         mVolumeSeekBar.setIndicatorTextDecimalFormat("0.0");
 
         /*OnClick*/
+        // adjusts width upon clicking naming bar
         mAmplifierNameLayout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +60,7 @@ public class Amplifier extends FrameLayout {
         mVolumeSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("amp_GAIN_" + moduleID, leftValue/volNormalize);
+                PdBase.sendFloat("amp_GAIN_" + moduleID, leftValue/NORMALIZE_VOLUME);
             }
 
             @Override

@@ -29,12 +29,14 @@ public class Matrix extends FrameLayout {
     private LinearLayout mMatrixControls;
     private LinearLayout mMatrixRoutingLayout;
     private List<Routing> mRoutedModules;
+    private List<Routing> mRoutedMidi;
 
     public Matrix(Context context) {
         super(context);
         /*vars*/
         mApplication = ((MyApplication) context.getApplicationContext());
         mRoutedModules = new ArrayList<>();
+        mRoutedMidi = new ArrayList<>();
         isCollapsed = false;
 
         /*ui*/
@@ -47,6 +49,7 @@ public class Matrix extends FrameLayout {
         mMatrixControls.setLayoutParams(new LinearLayout.LayoutParams(mApplication.getModuleControlsWidth(), mMatrixControls.getLayoutParams().height));
 
         /*OnClick*/
+        // adjusts width upon clicking naming bar
         mMatrixName.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,18 +60,28 @@ public class Matrix extends FrameLayout {
             }
         });
 
-        /*Creates*/
-        for (int moduleID = 1; moduleID <= 24; moduleID++) {
-            Routing newRoutedModule = new Routing(context, moduleID, false);
+        /*Creates modules and midi routing layouts in matrix*/
+        for (int moduleQuantity = 1; moduleQuantity <= 24; moduleQuantity++) {
+            Routing newRoutedModule = new Routing(context, moduleQuantity, false);
             mRoutedModules.add(newRoutedModule);
             mMatrixRoutingLayout.addView(newRoutedModule, mMatrixRoutingLayout.getChildCount());
         }
 
-        for (int midiID = 1; midiID <= 8; midiID++) {
-            Routing newRoutedModule = new Routing(context, midiID, true);
-            mRoutedModules.add(newRoutedModule);
-            mMatrixRoutingLayout.addView(newRoutedModule, mMatrixRoutingLayout.getChildCount());
+        for (int midiQuantity = 1; midiQuantity <= 8; midiQuantity++) {
+            Routing newRoutedMidi = new Routing(context, midiQuantity, true);
+            mRoutedMidi.add(newRoutedMidi);
+            mMatrixRoutingLayout.addView(newRoutedMidi, mMatrixRoutingLayout.getChildCount());
         }
+
+        /*init osc 1 to master and osc 1 pitch to midi 1*/
+        mRoutedModules.get(0).mSources.setSelection(1);
+        mRoutedModules.get(0).mDestinations.setSelection(31);
+        mRoutedMidi.get(0).mSources.setSelection(1);
+        mRoutedMidi.get(0).mDestinations.setSelection(1);
+        PdBase.sendFloat("toggle_mod_matrix_path_IN_1", 1.0f);
+        PdBase.sendFloat("toggle_mod_matrix_path_IN_31", 1.0f);
+        PdBase.sendFloat("toggle_midi_mod_matrix_path_1", 1.0f);
+        PdBase.sendFloat("toggle_midi_mod_matrix_path_OUT_1", 1.0f);
 
     }
 
@@ -88,7 +101,7 @@ public class Matrix extends FrameLayout {
              mDepthSeekBar = findViewById(R.id.depthSeekBar);
 
              /*depth init*/
-             final int depthNormalize = 100;
+             final int NORMALIZE_DEPTH = 100;
              mDepthSeekBar.setIndicatorTextDecimalFormat("0.0");
              mDepthSeekBar.setProgress(100.0f);
              PdBase.sendFloat("channel_DEPTH_" + modMatrixChannel, 1.0f);
@@ -144,7 +157,7 @@ public class Matrix extends FrameLayout {
              mDepthSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
                  @Override
                  public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                     PdBase.sendFloat("channel_DEPTH_" + modMatrixChannel, leftValue/depthNormalize);
+                     PdBase.sendFloat("channel_DEPTH_" + modMatrixChannel, leftValue/NORMALIZE_DEPTH);
                  }
 
                  @Override

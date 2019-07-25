@@ -30,7 +30,7 @@ public class MasterAmp extends FrameLayout {
         /*vars*/
         mApplication = ((MyApplication)context.getApplicationContext());
         isCollapsed = false;
-        final int masterNormalize = 100;
+        final int NORMALIZE_MASTER = 100;
 
         /*ui*/
         LayoutInflater.from(context).inflate(R.layout.layout_masteramp, this);
@@ -49,6 +49,7 @@ public class MasterAmp extends FrameLayout {
         PdBase.sendFloat("master_amp_GAIN", 1.0f);
 
         /*OnClick*/
+        // adjusts width upon clicking naming bar
         mMasterAmpNameLayout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,8 +63,7 @@ public class MasterAmp extends FrameLayout {
         mMasterSeekBar.setOnRangeChangedListener(new OnRangeChangedListener() {
             @Override
             public void onRangeChanged(RangeSeekBar view, float leftValue, float rightValue, boolean isFromUser) {
-                PdBase.sendFloat("master_amp_GAIN", leftValue/masterNormalize);
-
+                PdBase.sendFloat("master_amp_GAIN", leftValue/NORMALIZE_MASTER);
             }
 
             @Override
